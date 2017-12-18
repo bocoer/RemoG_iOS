@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360A2A891FE87B6200033B1C /* SensorDataFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360A2A881FE87B6200033B1C /* SensorDataFieldCell.swift */; };
+		360A2A8B1FE87F5A00033B1C /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360A2A8A1FE87F5A00033B1C /* RootController.swift */; };
 		362853A91FE85DF200CBF56E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853A81FE85DF200CBF56E /* AppDelegate.swift */; };
 		362853AB1FE85DF200CBF56E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853AA1FE85DF200CBF56E /* RootViewController.swift */; };
-		362853AD1FE85DF200CBF56E /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853AC1FE85DF200CBF56E /* DataViewController.swift */; };
-		362853AF1FE85DF200CBF56E /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853AE1FE85DF200CBF56E /* ModelController.swift */; };
 		362853B21FE85DF200CBF56E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362853B01FE85DF200CBF56E /* Main.storyboard */; };
 		362853B41FE85DF200CBF56E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 362853B31FE85DF200CBF56E /* Assets.xcassets */; };
 		362853B71FE85DF200CBF56E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362853B51FE85DF200CBF56E /* LaunchScreen.storyboard */; };
 		362853C21FE85DF200CBF56E /* RemoGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853C11FE85DF200CBF56E /* RemoGTests.swift */; };
 		362853CD1FE85DF200CBF56E /* RemoGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853CC1FE85DF200CBF56E /* RemoGUITests.swift */; };
+		362853DD1FE8634600CBF56E /* SensorDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853DC1FE8634600CBF56E /* SensorDataViewController.swift */; };
+		362853DF1FE8703F00CBF56E /* SensorDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853DE1FE8703F00CBF56E /* SensorDataTableViewController.swift */; };
+		362853E11FE8708800CBF56E /* SensorDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853E01FE8708800CBF56E /* SensorDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		360A2A881FE87B6200033B1C /* SensorDataFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataFieldCell.swift; sourceTree = "<group>"; };
+		360A2A8A1FE87F5A00033B1C /* RootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootController.swift; sourceTree = "<group>"; };
 		362853A51FE85DF200CBF56E /* RemoG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		362853A81FE85DF200CBF56E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		362853AA1FE85DF200CBF56E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		362853AC1FE85DF200CBF56E /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		362853AE1FE85DF200CBF56E /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		362853B11FE85DF200CBF56E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		362853B31FE85DF200CBF56E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		362853B61FE85DF200CBF56E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +54,9 @@
 		362853C81FE85DF200CBF56E /* RemoGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		362853CC1FE85DF200CBF56E /* RemoGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoGUITests.swift; sourceTree = "<group>"; };
 		362853CE1FE85DF200CBF56E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		362853DC1FE8634600CBF56E /* SensorDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataViewController.swift; sourceTree = "<group>"; };
+		362853DE1FE8703F00CBF56E /* SensorDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataTableViewController.swift; sourceTree = "<group>"; };
+		362853E01FE8708800CBF56E /* SensorDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +107,13 @@
 		362853A71FE85DF200CBF56E /* RemoG */ = {
 			isa = PBXGroup;
 			children = (
+				360A2A8A1FE87F5A00033B1C /* RootController.swift */,
+				362853E01FE8708800CBF56E /* SensorDataController.swift */,
 				362853A81FE85DF200CBF56E /* AppDelegate.swift */,
 				362853AA1FE85DF200CBF56E /* RootViewController.swift */,
-				362853AC1FE85DF200CBF56E /* DataViewController.swift */,
-				362853AE1FE85DF200CBF56E /* ModelController.swift */,
+				362853DC1FE8634600CBF56E /* SensorDataViewController.swift */,
+				362853DE1FE8703F00CBF56E /* SensorDataTableViewController.swift */,
+				360A2A881FE87B6200033B1C /* SensorDataFieldCell.swift */,
 				362853B01FE85DF200CBF56E /* Main.storyboard */,
 				362853B31FE85DF200CBF56E /* Assets.xcassets */,
 				362853B51FE85DF200CBF56E /* LaunchScreen.storyboard */,
@@ -266,8 +275,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				362853AB1FE85DF200CBF56E /* RootViewController.swift in Sources */,
-				362853AF1FE85DF200CBF56E /* ModelController.swift in Sources */,
-				362853AD1FE85DF200CBF56E /* DataViewController.swift in Sources */,
+				362853DF1FE8703F00CBF56E /* SensorDataTableViewController.swift in Sources */,
+				360A2A891FE87B6200033B1C /* SensorDataFieldCell.swift in Sources */,
+				362853E11FE8708800CBF56E /* SensorDataController.swift in Sources */,
+				362853DD1FE8634600CBF56E /* SensorDataViewController.swift in Sources */,
+				360A2A8B1FE87F5A00033B1C /* RootController.swift in Sources */,
 				362853A91FE85DF200CBF56E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
