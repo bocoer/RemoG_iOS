@@ -19,6 +19,8 @@
 		362853DD1FE8634600CBF56E /* SensorDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853DC1FE8634600CBF56E /* SensorDataViewController.swift */; };
 		362853DF1FE8703F00CBF56E /* SensorDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853DE1FE8703F00CBF56E /* SensorDataTableViewController.swift */; };
 		362853E11FE8708800CBF56E /* SensorDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853E01FE8708800CBF56E /* SensorDataController.swift */; };
+		36389C1B1FE97BEE00A19F70 /* CallbackObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */; };
+		36389C1D1FE97DA200A19F70 /* CallbackDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		362853DC1FE8634600CBF56E /* SensorDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataViewController.swift; sourceTree = "<group>"; };
 		362853DE1FE8703F00CBF56E /* SensorDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataTableViewController.swift; sourceTree = "<group>"; };
 		362853E01FE8708800CBF56E /* SensorDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataController.swift; sourceTree = "<group>"; };
+		36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackObj.swift; sourceTree = "<group>"; };
+		36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackDictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 				362853DC1FE8634600CBF56E /* SensorDataViewController.swift */,
 				362853DE1FE8703F00CBF56E /* SensorDataTableViewController.swift */,
 				360A2A881FE87B6200033B1C /* SensorDataFieldCell.swift */,
+				36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */,
+				36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */,
 				362853B01FE85DF200CBF56E /* Main.storyboard */,
 				362853B31FE85DF200CBF56E /* Assets.xcassets */,
 				362853B51FE85DF200CBF56E /* LaunchScreen.storyboard */,
@@ -279,8 +285,10 @@
 				360A2A891FE87B6200033B1C /* SensorDataFieldCell.swift in Sources */,
 				362853E11FE8708800CBF56E /* SensorDataController.swift in Sources */,
 				362853DD1FE8634600CBF56E /* SensorDataViewController.swift in Sources */,
+				36389C1B1FE97BEE00A19F70 /* CallbackObj.swift in Sources */,
 				360A2A8B1FE87F5A00033B1C /* RootController.swift in Sources */,
 				362853A91FE85DF200CBF56E /* AppDelegate.swift in Sources */,
+				36389C1D1FE97DA200A19F70 /* CallbackDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

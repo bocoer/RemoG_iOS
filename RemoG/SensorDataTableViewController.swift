@@ -12,6 +12,7 @@ class SensorDataTableViewController: UITableViewController {
     weak var sensorDataController: SensorDataController! {
         didSet {
             tableView.reloadData()
+            sensorDataController.changeHandlers[self] = tableView.reloadData
         }
     }
     

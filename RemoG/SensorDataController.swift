@@ -9,5 +9,10 @@
 import Foundation
 
 class SensorDataController {
-    var sensorData: [String:String] = [:]
+    var sensorData: [String:String] = [:] {
+        didSet {
+            changeHandlers.callbackAll()
+        }
+    }
+    var changeHandlers: CallbackDictionary = CallbackDictionary()
 }
