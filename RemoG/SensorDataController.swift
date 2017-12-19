@@ -9,7 +9,5 @@
 import Foundation
 
 class SensorDataController {
-    var sensorData: [String:String] = [
-        "Test Key" : "Test Value"
-    ]
+    var sensorData: [String:String] = [:]
 }
