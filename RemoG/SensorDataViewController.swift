@@ -9,10 +9,10 @@
 import UIKit
 
 /*
- * Controls the view which displays the sensor data
+ * Controls a view which displays sensor data.
  */
 class SensorDataViewController: UIViewController {
-    weak var sensorDataController: SensorDataController!
+    var sensorDataController: SensorDataController!
     var tableViewController: SensorDataTableViewController!
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

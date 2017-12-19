@@ -21,6 +21,11 @@
 		362853E11FE8708800CBF56E /* SensorDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853E01FE8708800CBF56E /* SensorDataController.swift */; };
 		36389C1B1FE97BEE00A19F70 /* CallbackObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */; };
 		36389C1D1FE97DA200A19F70 /* CallbackDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */; };
+		36A461371FE9C805003D4364 /* GaugeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A461361FE9C805003D4364 /* GaugeController.swift */; };
+		36A461391FE9C8B9003D4364 /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A461381FE9C8B9003D4364 /* GaugeView.swift */; };
+		36A4613B1FE9C8DA003D4364 /* GaugeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A4613A1FE9C8DA003D4364 /* GaugeViewController.swift */; };
+		36A4613D1FE9CC7A003D4364 /* GaugeDualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A4613C1FE9CC7A003D4364 /* GaugeDualViewController.swift */; };
+		36A4613F1FE9D028003D4364 /* SimplePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A4613E1FE9D028003D4364 /* SimplePageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,11 @@
 		362853E01FE8708800CBF56E /* SensorDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataController.swift; sourceTree = "<group>"; };
 		36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackObj.swift; sourceTree = "<group>"; };
 		36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackDictionary.swift; sourceTree = "<group>"; };
+		36A461361FE9C805003D4364 /* GaugeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeController.swift; sourceTree = "<group>"; };
+		36A461381FE9C8B9003D4364 /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
+		36A4613A1FE9C8DA003D4364 /* GaugeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeViewController.swift; sourceTree = "<group>"; };
+		36A4613C1FE9CC7A003D4364 /* GaugeDualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeDualViewController.swift; sourceTree = "<group>"; };
+		36A4613E1FE9D028003D4364 /* SimplePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,11 +123,16 @@
 			children = (
 				360A2A8A1FE87F5A00033B1C /* RootController.swift */,
 				362853E01FE8708800CBF56E /* SensorDataController.swift */,
+				36A461361FE9C805003D4364 /* GaugeController.swift */,
 				362853A81FE85DF200CBF56E /* AppDelegate.swift */,
 				362853AA1FE85DF200CBF56E /* RootViewController.swift */,
+				36A4613E1FE9D028003D4364 /* SimplePageViewController.swift */,
 				362853DC1FE8634600CBF56E /* SensorDataViewController.swift */,
+				36A4613C1FE9CC7A003D4364 /* GaugeDualViewController.swift */,
 				362853DE1FE8703F00CBF56E /* SensorDataTableViewController.swift */,
+				36A4613A1FE9C8DA003D4364 /* GaugeViewController.swift */,
 				360A2A881FE87B6200033B1C /* SensorDataFieldCell.swift */,
+				36A461381FE9C8B9003D4364 /* GaugeView.swift */,
 				36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */,
 				36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */,
 				362853B01FE85DF200CBF56E /* Main.storyboard */,
@@ -281,13 +296,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				362853AB1FE85DF200CBF56E /* RootViewController.swift in Sources */,
+				36A461371FE9C805003D4364 /* GaugeController.swift in Sources */,
 				362853DF1FE8703F00CBF56E /* SensorDataTableViewController.swift in Sources */,
 				360A2A891FE87B6200033B1C /* SensorDataFieldCell.swift in Sources */,
+				36A4613B1FE9C8DA003D4364 /* GaugeViewController.swift in Sources */,
 				362853E11FE8708800CBF56E /* SensorDataController.swift in Sources */,
 				362853DD1FE8634600CBF56E /* SensorDataViewController.swift in Sources */,
 				36389C1B1FE97BEE00A19F70 /* CallbackObj.swift in Sources */,
 				360A2A8B1FE87F5A00033B1C /* RootController.swift in Sources */,
+				36A461391FE9C8B9003D4364 /* GaugeView.swift in Sources */,
 				362853A91FE85DF200CBF56E /* AppDelegate.swift in Sources */,
+				36A4613F1FE9D028003D4364 /* SimplePageViewController.swift in Sources */,
+				36A4613D1FE9CC7A003D4364 /* GaugeDualViewController.swift in Sources */,
 				36389C1D1FE97DA200A19F70 /* CallbackDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

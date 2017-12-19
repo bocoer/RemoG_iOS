@@ -58,4 +58,6 @@ class RootController {
     }
     
     let sensorDataController = SensorDataController()
+    let mphGaugeController = GaugeController()
+    let tempGaugeController = GaugeController()
 }
