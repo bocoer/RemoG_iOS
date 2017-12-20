@@ -58,6 +58,6 @@ class RootController {
     }
     
     let sensorDataController = SensorDataController()
-    let mphGaugeController = GaugeController()
-    let tempGaugeController = GaugeController()
+    let mphGaugeController = GaugeController(minValue: 0, maxValue: 120)
+    let tempGaugeController = GaugeController(minValue: 0, maxValue: 160)
 }

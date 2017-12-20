@@ -11,7 +11,7 @@ import UIKit
 class RootViewController: UIViewController {
     let rootController: RootController = RootController()
 
-    var sensorDataViewController: SensorDataViewController!
+    var overviewViewController: SensorDataViewController!
     var mphDualViewController: GaugeDualViewController!
     var tempDualViewController: GaugeDualViewController!
     var pageViewController: SimplePageViewController!
@@ -19,19 +19,22 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sensorDataViewController = storyboard!.instantiateViewController(withIdentifier: "SensorDataViewController") as! SensorDataViewController
-        sensorDataViewController.sensorDataController = rootController.sensorDataController
+        overviewViewController = storyboard!.instantiateViewController(withIdentifier: "SensorDataViewController") as! SensorDataViewController
+        overviewViewController.sensorDataController = rootController.sensorDataController
+        overviewViewController.title = "Overview"
         
-        mphDualViewController = storyboard!.instantiateViewController(withIdentifier: "MphDualViewController") as! GaugeDualViewController
+        mphDualViewController = storyboard!.instantiateViewController(withIdentifier: "GaugeDualViewController") as! GaugeDualViewController
         mphDualViewController.sensorDataController = rootController.sensorDataController
         mphDualViewController.gaugeController = rootController.mphGaugeController
+        mphDualViewController.title = "Speed"
         
-        tempDualViewController = storyboard!.instantiateViewController(withIdentifier: "TempDualViewController") as! GaugeDualViewController
+        tempDualViewController = storyboard!.instantiateViewController(withIdentifier: "GaugeDualViewController") as! GaugeDualViewController
         tempDualViewController.sensorDataController = rootController.sensorDataController
         tempDualViewController.gaugeController = rootController.tempGaugeController
+        tempDualViewController.title = "Temperature"
         
         let viewControllers: [UIViewController] = [
-            sensorDataViewController,
+            overviewViewController,
             mphDualViewController,
             tempDualViewController
         ]

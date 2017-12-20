@@ -14,5 +14,20 @@ class GaugeController {
             changeHandlers.callbackAll()
         }
     }
+    var minValue: Float {
+        didSet {
+            changeHandlers.callbackAll()
+        }
+    }
+    var maxValue: Float {
+        didSet {
+            changeHandlers.callbackAll()
+        }
+    }
     var changeHandlers: CallbackDictionary = CallbackDictionary()
+    
+    init(minValue: Float, maxValue: Float) {
+        self.minValue = minValue
+        self.maxValue = maxValue
+    }
 }

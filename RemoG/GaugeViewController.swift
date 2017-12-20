@@ -28,6 +28,8 @@ class GaugeViewController: UIViewController {
     
     func updateGauge() {
         gaugeView.gaugeValue = gaugeController.gaugeValue
+        gaugeView.minGaugeValue = gaugeController.minValue
+        gaugeView.maxGaugeValue = gaugeController.maxValue
     }
 
     /*
