@@ -10,39 +10,42 @@ import UIKit
 
 class RootViewController: UIViewController {
     let rootController: RootController = RootController()
-    
-    var sensorDataViewController: SensorDataViewController!
-    var viewControllers: [UIViewController]!
-    var pageViewController: UIPageViewController!
+
+    var overviewViewController: SensorDataViewController!
+    var mphDualViewController: GaugeDualViewController!
+    var tempDualViewController: GaugeDualViewController!
+    var pageViewController: SimplePageViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sensorDataViewController = storyboard!.instantiateViewController(withIdentifier: "SensorDataViewController") as! SensorDataViewController
-        sensorDataViewController.sensorDataController = rootController.sensorDataController
+        overviewViewController = storyboard!.instantiateViewController(withIdentifier: "SensorDataViewController") as! SensorDataViewController
+        overviewViewController.sensorDataController = rootController.sensorDataController
+        overviewViewController.title = "Overview"
         
-        viewControllers = [
-            sensorDataViewController
+        mphDualViewController = storyboard!.instantiateViewController(withIdentifier: "GaugeDualViewController") as! GaugeDualViewController
+        mphDualViewController.sensorDataController = rootController.sensorDataController
+        mphDualViewController.gaugeController = rootController.mphGaugeController
+        mphDualViewController.title = "Speed"
+        
+        tempDualViewController = storyboard!.instantiateViewController(withIdentifier: "GaugeDualViewController") as! GaugeDualViewController
+        tempDualViewController.sensorDataController = rootController.sensorDataController
+        tempDualViewController.gaugeController = rootController.tempGaugeController
+        tempDualViewController.title = "Temperature"
+        
+        let viewControllers: [UIViewController] = [
+            overviewViewController,
+            mphDualViewController,
+            tempDualViewController
         ]
         
-        pageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
-        pageViewController!.setViewControllers(
-            viewControllers,
-            direction: .forward,
-            animated: false,
-            completion: { done in }
-        )
-
+        pageViewController = SimplePageViewController(allViewControllers: viewControllers, transitionStyle: .pageCurl)
+        
         self.addChildViewController(pageViewController!)
         self.view.addSubview(pageViewController!.view)
         
         //Test setting field
         rootController.mph = 60
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
