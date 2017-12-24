@@ -44,8 +44,10 @@ class RootViewController: UIViewController {
         self.addChildViewController(pageViewController!)
         self.view.addSubview(pageViewController!.view)
         
-        //Test setting field
-        rootController.mph = 60
+        //Test engine
+        let engineSim = EngineSim()
+        engineSim.controller = rootController
+        engineSim.start()
     }
 }
 

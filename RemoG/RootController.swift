@@ -14,6 +14,7 @@ class RootController {
     var mph: Float = Float.nan {
         didSet {
             sensorDataController.sensorData["Mph"] = String(mph)
+            mphGaugeController.gaugeValue = mph
         }
     }
     var rpm: Int = uintNan {
@@ -24,6 +25,7 @@ class RootController {
     var otf: Float = Float.nan {
         didSet {
             sensorDataController.sensorData["OT F"] = String(otf)
+            tempGaugeController.gaugeValue = otf
         }
     }
     var oilPsi: Int = uintNan {
