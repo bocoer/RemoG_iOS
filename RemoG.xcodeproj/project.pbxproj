@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		360A2A891FE87B6200033B1C /* SensorDataFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360A2A881FE87B6200033B1C /* SensorDataFieldCell.swift */; };
 		360A2A8B1FE87F5A00033B1C /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360A2A8A1FE87F5A00033B1C /* RootController.swift */; };
+		361DCB3E1FEF4AEB000E66FE /* EngineSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361DCB3D1FEF4AEB000E66FE /* EngineSim.swift */; };
 		362853A91FE85DF200CBF56E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853A81FE85DF200CBF56E /* AppDelegate.swift */; };
 		362853AB1FE85DF200CBF56E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853AA1FE85DF200CBF56E /* RootViewController.swift */; };
 		362853B21FE85DF200CBF56E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362853B01FE85DF200CBF56E /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		360A2A881FE87B6200033B1C /* SensorDataFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataFieldCell.swift; sourceTree = "<group>"; };
 		360A2A8A1FE87F5A00033B1C /* RootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootController.swift; sourceTree = "<group>"; };
+		361DCB3D1FEF4AEB000E66FE /* EngineSim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineSim.swift; sourceTree = "<group>"; };
 		362853A51FE85DF200CBF56E /* RemoG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		362853A81FE85DF200CBF56E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		362853AA1FE85DF200CBF56E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				36A461381FE9C8B9003D4364 /* GaugeView.swift */,
 				36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */,
 				36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */,
+				361DCB3D1FEF4AEB000E66FE /* EngineSim.swift */,
 				362853B01FE85DF200CBF56E /* Main.storyboard */,
 				362853B31FE85DF200CBF56E /* Assets.xcassets */,
 				362853B51FE85DF200CBF56E /* LaunchScreen.storyboard */,
@@ -304,6 +307,7 @@
 				362853DD1FE8634600CBF56E /* SensorDataViewController.swift in Sources */,
 				36389C1B1FE97BEE00A19F70 /* CallbackObj.swift in Sources */,
 				360A2A8B1FE87F5A00033B1C /* RootController.swift in Sources */,
+				361DCB3E1FEF4AEB000E66FE /* EngineSim.swift in Sources */,
 				36A461391FE9C8B9003D4364 /* GaugeView.swift in Sources */,
 				362853A91FE85DF200CBF56E /* AppDelegate.swift in Sources */,
 				36A4613F1FE9D028003D4364 /* SimplePageViewController.swift in Sources */,
