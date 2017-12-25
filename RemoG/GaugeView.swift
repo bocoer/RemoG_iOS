@@ -220,7 +220,6 @@ class GaugeView: UIView {
     
     private func valueMarkerSidePath(side: Side) -> CGPath {
         let gaugeFractionUnclamped = (CGFloat(gaugeValue) - CGFloat(minGaugeValue)) / (CGFloat(maxGaugeValue) - CGFloat(minGaugeValue))
-        NSLog("%f", gaugeFractionUnclamped)
         let gaugeFraction = max(min(gaugeFractionUnclamped, 1 + GaugeView.valueMarkerMaxOutOfRangeRatio), -GaugeView.valueMarkerMaxOutOfRangeRatio)
         let valueMarkerAngle = (GaugeView.arcLeftAngle + CGFloat.pi) - (gaugeFraction * GaugeView.arcSpanAngleRad)
         

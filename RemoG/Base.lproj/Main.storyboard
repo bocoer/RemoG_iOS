@@ -95,7 +95,7 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNo-mZ-azu">
                                             <rect key="frame" x="170" y="11" width="150" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -144,6 +144,7 @@
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="U4p-cP-bia" userLabel="Sensor Data View">
                                         <rect key="frame" x="0.0" y="335" width="335" height="273"/>
+                                        <viewLayoutGuide key="safeArea" id="ro2-0Q-YOj"/>
                                         <connections>
                                             <segue destination="B7R-bW-Lxt" kind="embed" identifier="EmbedSensorDataTableViewController" id="zcg-Th-3F5"/>
                                         </connections>
@@ -164,7 +165,7 @@
                                     <constraint firstItem="U4p-cP-bia" firstAttribute="top" secondItem="HVF-7a-geh" secondAttribute="bottom" constant="16" id="TQX-54-ohd"/>
                                     <constraint firstAttribute="trailing" secondItem="HVF-7a-geh" secondAttribute="trailing" constant="16" id="WBd-WF-6LL"/>
                                     <constraint firstItem="U4p-cP-bia" firstAttribute="leading" secondItem="HVF-7a-geh" secondAttribute="trailing" constant="16" id="a6V-nB-9ES"/>
-                                    <constraint firstAttribute="trailing" secondItem="U4p-cP-bia" secondAttribute="trailing" id="imj-Kl-eUa"/>
+                                    <constraint firstItem="U4p-cP-bia" firstAttribute="trailing" secondItem="O65-dJ-GL2" secondAttribute="trailing" id="imj-Kl-eUa"/>
                                     <constraint firstItem="HVF-7a-geh" firstAttribute="leading" secondItem="O65-dJ-GL2" secondAttribute="leading" constant="16" id="qKg-gN-T5R"/>
                                     <constraint firstItem="HVF-7a-geh" firstAttribute="top" secondItem="O65-dJ-GL2" secondAttribute="top" constant="16" id="tq4-f6-peF"/>
                                     <constraint firstItem="U4p-cP-bia" firstAttribute="leading" secondItem="O65-dJ-GL2" secondAttribute="leading" id="uZy-yW-AMQ"/>

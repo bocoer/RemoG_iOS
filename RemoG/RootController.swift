@@ -24,7 +24,7 @@ class RootController {
     }
     var otf: Float = Float.nan {
         didSet {
-            sensorDataController.sensorData["OT F"] = String(otf)
+            sensorDataController.sensorData["OT °F"] = String(otf)
             tempGaugeController.gaugeValue = otf
         }
     }
@@ -35,7 +35,7 @@ class RootController {
     }
     var chtf: Int = uintNan {
         didSet {
-            sensorDataController.sensorData["CHT F"] = String(chtf)
+            sensorDataController.sensorData["CHT °F"] = String(chtf)
         }
     }
     var volt: Float = Float.nan {
