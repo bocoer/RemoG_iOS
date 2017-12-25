@@ -27,6 +27,9 @@
 		36A4613B1FE9C8DA003D4364 /* GaugeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A4613A1FE9C8DA003D4364 /* GaugeViewController.swift */; };
 		36A4613D1FE9CC7A003D4364 /* GaugeDualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A4613C1FE9CC7A003D4364 /* GaugeDualViewController.swift */; };
 		36A4613F1FE9D028003D4364 /* SimplePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A4613E1FE9D028003D4364 /* SimplePageViewController.swift */; };
+		36B78C301FF1693E00C69725 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B78C2F1FF1693E00C69725 /* CGRect.swift */; };
+		36B78C321FF174B600C69725 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B78C311FF174B600C69725 /* CGPoint.swift */; };
+		36B78C341FF1752700C69725 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B78C331FF1752700C69725 /* CGSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		36A4613A1FE9C8DA003D4364 /* GaugeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeViewController.swift; sourceTree = "<group>"; };
 		36A4613C1FE9CC7A003D4364 /* GaugeDualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeDualViewController.swift; sourceTree = "<group>"; };
 		36A4613E1FE9D028003D4364 /* SimplePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePageViewController.swift; sourceTree = "<group>"; };
+		36B78C2F1FF1693E00C69725 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
+		36B78C311FF174B600C69725 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		36B78C331FF1752700C69725 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,9 @@
 				36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */,
 				36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */,
 				361DCB3D1FEF4AEB000E66FE /* EngineSim.swift */,
+				36B78C2F1FF1693E00C69725 /* CGRect.swift */,
+				36B78C331FF1752700C69725 /* CGSize.swift */,
+				36B78C311FF174B600C69725 /* CGPoint.swift */,
 				362853B01FE85DF200CBF56E /* Main.storyboard */,
 				362853B31FE85DF200CBF56E /* Assets.xcassets */,
 				362853B51FE85DF200CBF56E /* LaunchScreen.storyboard */,
@@ -311,8 +320,11 @@
 				36A461391FE9C8B9003D4364 /* GaugeView.swift in Sources */,
 				362853A91FE85DF200CBF56E /* AppDelegate.swift in Sources */,
 				36A4613F1FE9D028003D4364 /* SimplePageViewController.swift in Sources */,
+				36B78C321FF174B600C69725 /* CGPoint.swift in Sources */,
 				36A4613D1FE9CC7A003D4364 /* GaugeDualViewController.swift in Sources */,
 				36389C1D1FE97DA200A19F70 /* CallbackDictionary.swift in Sources */,
+				36B78C341FF1752700C69725 /* CGSize.swift in Sources */,
+				36B78C301FF1693E00C69725 /* CGRect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

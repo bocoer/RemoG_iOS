@@ -60,6 +60,16 @@ class RootController {
     }
     
     let sensorDataController = SensorDataController()
-    let mphGaugeController = GaugeController(minValue: 0, maxValue: 120)
-    let tempGaugeController = GaugeController(minValue: 0, maxValue: 160)
+    let mphGaugeController = GaugeController(
+        minValue: 0,
+        maxValue: 120,
+        numMajorTicks: 13, //0 10 20 30 40 50 60 70 80 90 100 110 120
+        numMinorTicks: 121
+    )
+    let tempGaugeController = GaugeController(
+        minValue: 60,
+        maxValue: 360,
+        numMajorTicks: 16, //60 80 100 120 140 160 180 200 220 240 260 280 300 320 340 360
+        numMinorTicks: 301
+    )
 }
