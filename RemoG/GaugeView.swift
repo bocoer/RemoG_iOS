@@ -26,17 +26,19 @@ class GaugeView: UIView {
     private static let majorTickThickness: CGFloat = 2
     private static let minorTickThickness: CGFloat = 1
     
-    private static let arcPadding: CGFloat = 2
-    private static let arcInset: CGFloat = GaugeView.fontPadding + GaugeView.fontSize + GaugeView.arcPadding
+    private static let arcPadding: CGFloat = 4
+    private static let arcInset: CGFloat = fontPadding + fontSize + arcPadding
+    
+    private static let fontSize: CGFloat = 16
+    private static let fontMaxWidth: CGFloat = fontSize * 4
+    private static let font: CGFont = CGFont("Helvetica" as CFString)!
+    private static let fontPadding: CGFloat = 2
+    private static let fontInset: CGFloat = fontPadding + (fontSize / 2)
     
     private static let valueMarkerBaseRadius: CGFloat = 12
     private static let valueMarkerInnerCircleRadius: CGFloat = 8
     
     private static let valueMarkerMaxOutOfRangeRatio: CGFloat = 0.0625
-    
-    private static let fontSize: CGFloat = 24
-    private static let fontPadding: CGFloat = 4
-    private static let font: UIFont = UIFont.systemFont(ofSize: GaugeView.fontSize)
     
     var gaugeValue: Float = Float.nan {
         didSet {
@@ -53,6 +55,7 @@ class GaugeView: UIView {
     @IBInspectable var numMajorTicks: Int = 0 {
         didSet {
             updateMajorTicks()
+            updateMajorTickLabels()
         }
     }
     @IBInspectable var numMinorTicks: Int = 0 {
@@ -70,9 +73,10 @@ class GaugeView: UIView {
                 startAngle: GaugeView.arcRightAngle,
                 endAngle: GaugeView.arcLeftAngle,
                 clockwise: false
-                ).cgPath
+            ).cgPath
             updateMajorTicks()
             updateMinorTicks()
+            updateMajorTickLabels()
             valueMarker.position = bounds.center
             if !valueMarker.isHidden {
                 updateValueMarkerImage()
@@ -82,11 +86,12 @@ class GaugeView: UIView {
     
     private let backgroundLayer: CAShapeLayer
     private let arcLayer: CAShapeLayer
-    private var arcMajorTicks: CAShapeLayer
-    private var arcMinorTicks: CAShapeLayer
-    private var valueMarker: CALayer
-    private var valueMarkerLeftSide: CAShapeLayer
-    private var valueMarkerRightSide: CAShapeLayer
+    private let majorTicks: CAShapeLayer
+    private let minorTicks: CAShapeLayer
+    private var majorTickLabels: [CATextLayer]
+    private let valueMarker: CALayer
+    private let valueMarkerLeftSide: CAShapeLayer
+    private let valueMarkerRightSide: CAShapeLayer
     
     private var radius: CGFloat {
         return bounds.width / 2 //width should be the same as height
@@ -105,13 +110,15 @@ class GaugeView: UIView {
         arcLayer.lineCap = kCALineCapRound
         arcLayer.fillColor = nil
         
-        arcMajorTicks = CAShapeLayer()
-        arcMajorTicks.strokeColor = GaugeView.displayColor
-        arcMajorTicks.lineWidth = GaugeView.majorTickThickness
+        majorTicks = CAShapeLayer()
+        majorTicks.strokeColor = GaugeView.displayColor
+        majorTicks.lineWidth = GaugeView.majorTickThickness
         
-        arcMinorTicks = CAShapeLayer()
-        arcMinorTicks.strokeColor = GaugeView.displayColor
-        arcMinorTicks.lineWidth = GaugeView.minorTickThickness
+        minorTicks = CAShapeLayer()
+        minorTicks.strokeColor = GaugeView.displayColor
+        minorTicks.lineWidth = GaugeView.minorTickThickness
+        
+        majorTickLabels = []
         
         valueMarker = CALayer()
         valueMarker.isHidden = true
@@ -126,8 +133,8 @@ class GaugeView: UIView {
         
         layer.addSublayer(backgroundLayer)
         layer.addSublayer(arcLayer)
-        layer.addSublayer(arcMajorTicks)
-        layer.addSublayer(arcMinorTicks)
+        layer.addSublayer(majorTicks)
+        layer.addSublayer(minorTicks)
         layer.addSublayer(valueMarker)
         
         valueMarker.addSublayer(valueMarkerLeftSide)
@@ -136,7 +143,7 @@ class GaugeView: UIView {
     
     ///Regenerates the major ticks' path.
     private func updateMajorTicks() {
-        arcMajorTicks.path = ticksPath(
+        majorTicks.path = ticksPath(
             numTicks: numMajorTicks,
             tickSize: GaugeView.majorTickSize
         )
@@ -144,7 +151,7 @@ class GaugeView: UIView {
     
     ///Regenerates the minor ticks' path.
     private func updateMinorTicks() {
-        arcMinorTicks.path = ticksPath(
+        minorTicks.path = ticksPath(
             numTicks: numMinorTicks,
             tickSize: GaugeView.minorTickSize
         )
@@ -152,17 +159,56 @@ class GaugeView: UIView {
     
     private func ticksPath(numTicks: Int, tickSize: CGFloat) -> CGPath {
         let path = CGMutablePath()
-        if numTicks > 1 {
-            let tickAngleDelta = GaugeView.arcSpanAngleRad / CGFloat(numTicks - 1)
-            for tickIdx in 0..<numTicks {
-                let tickAngle = (CGFloat(tickIdx) * tickAngleDelta) + GaugeView.arcRightAngle
-                let tickStartPos = bounds.center + CGSize(radius: arcRadius, angle: tickAngle)
-                let tickEndPos = bounds.center + CGSize(radius: arcRadius - tickSize, angle: tickAngle)
-                path.move(to: tickStartPos)
-                path.addLine(to: tickEndPos)
-            }
+        forEachTick(numTicks: numTicks) { _, tickAngle in
+            let tickStartPos = bounds.center + CGSize(radius: arcRadius, angle: tickAngle)
+            let tickEndPos = bounds.center + CGSize(radius: arcRadius - tickSize, angle: tickAngle)
+            path.move(to: tickStartPos)
+            path.addLine(to: tickEndPos)
         }
         return path
+    }
+    
+    //Regenerates the major tick labels.
+    func updateMajorTickLabels() {
+        majorTickLabels.forEach { $0.removeFromSuperlayer() }
+        majorTickLabels.removeAll()
+        forEachTick(numTicks: numMajorTicks) { tickIdx, tickAngle in
+            let tickValue = Int(round(((Float(tickIdx) / Float(numMajorTicks - 1)) * (maxGaugeValue - minGaugeValue)) + minGaugeValue))
+            
+            let tickLabelPos = bounds.center + CGSize(radius: radius - GaugeView.fontInset, angle: tickAngle)
+            let tickLabelRotation = CGFloat.pi - tickAngle
+            
+            let majorTickLabel = CATextLayer()
+            majorTickLabel.alignmentMode = kCAAlignmentCenter
+            majorTickLabel.font = GaugeView.font
+            majorTickLabel.fontSize = GaugeView.fontSize
+            majorTickLabel.foregroundColor = GaugeView.displayColor
+            majorTickLabel.position = tickLabelPos
+            majorTickLabel.bounds = CGRect(
+                x: 0,
+                y: 0,
+                width: GaugeView.fontMaxWidth,
+                height: GaugeView.fontSize
+            )
+            majorTickLabel.transform = CATransform3DMakeRotation(tickLabelRotation, 0, 0, 1)
+            
+            majorTickLabel.string = String(tickValue)
+            
+            layer.addSublayer(majorTickLabel)
+            majorTickLabels.append(majorTickLabel)
+        }
+    }
+    
+    ///Performs an action for each tick, and gives it the index and the tick's angle.
+    ///Used to render ticks or tick labels.
+    private func forEachTick(numTicks: Int, _ action: (Int, CGFloat) -> Void) {
+        if numTicks > 1 {
+            let tickAngleDelta = -GaugeView.arcSpanAngleRad / CGFloat(numTicks - 1)
+            for tickIdx in 0..<numTicks {
+                let tickAngle = CGFloat.pi + GaugeView.arcLeftAngle + (CGFloat(tickIdx) * tickAngleDelta)
+                action(tickIdx, tickAngle)
+            }
+        }
     }
     
     ///Regenerates the image of the value marker --
