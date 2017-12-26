@@ -24,10 +24,27 @@ class GaugeController {
             changeHandlers.callbackAll()
         }
     }
+    var numMajorTicks: Int {
+        didSet {
+            changeHandlers.callbackAll()
+        }
+    }
+    var numMinorTicks: Int {
+        didSet {
+            changeHandlers.callbackAll()
+        }
+    }
     var changeHandlers: CallbackDictionary = CallbackDictionary()
     
-    init(minValue: Float, maxValue: Float) {
+    init(
+        minValue: Float,
+        maxValue: Float,
+        numMajorTicks: Int,
+        numMinorTicks: Int
+    ) {
         self.minValue = minValue
         self.maxValue = maxValue
+        self.numMajorTicks = numMajorTicks
+        self.numMinorTicks = numMinorTicks
     }
 }

@@ -29,14 +29,11 @@ class EngineSim {
                 block: updateState
             )
         }
-        
-        NSLog("Engine started")
     }
     
     private func updateState(runTimer: Timer) {
         assert(self.runTimer == runTimer)
         
-        NSLog("Engine updated: %f %f %f %f ", runTimeLeft, ot, op, cht)
         if runTimeLeft > 0 {
             updateSimulationState()
         } else {

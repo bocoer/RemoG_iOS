@@ -12,8 +12,16 @@ import UIKit
  * Controls a view which displays both a gauge and sensor data.
  */
 class GaugeDualViewController: SensorDataViewController {
-    var gaugeController: GaugeController!
-    var gaugeViewController: GaugeViewController!
+    var gaugeController: GaugeController! {
+        didSet {
+            gaugeViewController?.gaugeController = gaugeController
+        }
+    }
+    var gaugeViewController: GaugeViewController! {
+        didSet {
+            gaugeViewController?.gaugeController = gaugeController
+        }
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)

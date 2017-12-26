@@ -82,7 +82,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="SensorDataTableViewController" id="B7R-bW-Lxt" customClass="SensorDataTableViewController" customModule="RemoG" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="a2a-SB-SKl">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="608"/>
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="273"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -95,7 +95,7 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNo-mZ-azu">
                                             <rect key="frame" x="170" y="11" width="150" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -143,13 +143,14 @@
                                 <rect key="frame" x="20" y="45" width="335" height="608"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="U4p-cP-bia" userLabel="Sensor Data View">
-                                        <rect key="frame" x="0.0" y="348" width="335" height="260"/>
+                                        <rect key="frame" x="0.0" y="335" width="335" height="273"/>
+                                        <viewLayoutGuide key="safeArea" id="ro2-0Q-YOj"/>
                                         <connections>
                                             <segue destination="B7R-bW-Lxt" kind="embed" identifier="EmbedSensorDataTableViewController" id="zcg-Th-3F5"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="HVF-7a-geh" userLabel="Gauge View">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                                        <rect key="frame" x="16" y="16" width="303" height="303"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="HVF-7a-geh" secondAttribute="height" multiplier="1:1" id="g9U-Wf-ai4"/>
                                         </constraints>
@@ -161,15 +162,15 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="U4p-cP-bia" secondAttribute="bottom" id="8zg-VG-snK"/>
-                                    <constraint firstItem="U4p-cP-bia" firstAttribute="top" secondItem="HVF-7a-geh" secondAttribute="bottom" constant="13" id="TQX-54-ohd"/>
-                                    <constraint firstAttribute="trailing" secondItem="HVF-7a-geh" secondAttribute="trailing" id="WBd-WF-6LL"/>
-                                    <constraint firstItem="U4p-cP-bia" firstAttribute="leading" secondItem="HVF-7a-geh" secondAttribute="trailing" constant="13" id="a6V-nB-9ES"/>
-                                    <constraint firstAttribute="trailing" secondItem="U4p-cP-bia" secondAttribute="trailing" id="imj-Kl-eUa"/>
-                                    <constraint firstItem="HVF-7a-geh" firstAttribute="leading" secondItem="O65-dJ-GL2" secondAttribute="leading" id="qKg-gN-T5R"/>
-                                    <constraint firstItem="HVF-7a-geh" firstAttribute="top" secondItem="O65-dJ-GL2" secondAttribute="top" id="tq4-f6-peF"/>
+                                    <constraint firstItem="U4p-cP-bia" firstAttribute="top" secondItem="HVF-7a-geh" secondAttribute="bottom" constant="16" id="TQX-54-ohd"/>
+                                    <constraint firstAttribute="trailing" secondItem="HVF-7a-geh" secondAttribute="trailing" constant="16" id="WBd-WF-6LL"/>
+                                    <constraint firstItem="U4p-cP-bia" firstAttribute="leading" secondItem="HVF-7a-geh" secondAttribute="trailing" constant="16" id="a6V-nB-9ES"/>
+                                    <constraint firstItem="U4p-cP-bia" firstAttribute="trailing" secondItem="O65-dJ-GL2" secondAttribute="trailing" id="imj-Kl-eUa"/>
+                                    <constraint firstItem="HVF-7a-geh" firstAttribute="leading" secondItem="O65-dJ-GL2" secondAttribute="leading" constant="16" id="qKg-gN-T5R"/>
+                                    <constraint firstItem="HVF-7a-geh" firstAttribute="top" secondItem="O65-dJ-GL2" secondAttribute="top" constant="16" id="tq4-f6-peF"/>
                                     <constraint firstItem="U4p-cP-bia" firstAttribute="leading" secondItem="O65-dJ-GL2" secondAttribute="leading" id="uZy-yW-AMQ"/>
                                     <constraint firstItem="U4p-cP-bia" firstAttribute="top" secondItem="O65-dJ-GL2" secondAttribute="top" id="wbI-eo-8t8"/>
-                                    <constraint firstAttribute="bottom" secondItem="HVF-7a-geh" secondAttribute="bottom" id="wy0-kZ-hyJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="HVF-7a-geh" secondAttribute="bottom" constant="16" id="wy0-kZ-hyJ"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -217,7 +218,7 @@
             <objects>
                 <viewController id="Eu5-9N-rrE" customClass="GaugeViewController" customModule="RemoG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fk7-Fs-kGD" customClass="GaugeView" customModule="RemoG" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                        <rect key="frame" x="0.0" y="0.0" width="303" height="303"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="dGd-n8-QSX"/>
@@ -237,6 +238,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hsb-o7-dI7"/>
+        <segue reference="zcg-Th-3F5"/>
     </inferredMetricsTieBreakers>
 </document>
