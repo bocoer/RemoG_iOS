@@ -16,8 +16,8 @@ extension CGSize {
     
     init(radius: CGFloat, angle: CGFloat) {
         self.init(
-            width: sin(angle) * radius,
-            height: cos(angle) * radius
+            width: -sin(angle) * radius,
+            height: -cos(angle) * radius
         )
     }
 }
