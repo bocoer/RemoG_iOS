@@ -9,6 +9,9 @@
 import Foundation
 
 class SensorDataController {
+    static let locationKey: String = "Location"
+    static let locationDisabledVal: String = "Disabled"
+    
     var sensorData: [String:String] = [:] {
         didSet {
             changeHandlers.callbackAll()

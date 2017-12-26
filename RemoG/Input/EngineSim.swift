@@ -18,21 +18,32 @@ class EngineSim {
     var runTimeLeft: TimeInterval = TimeInterval.nan
     private var runTimer: Timer? = nil
     
-    ///Makes the EngineSim run for a random amount of time.
+    //@objc /Makes the EngineSim run for a random amount of time.
     ///If it's already running, just "restarts" it to that amount of time.
     func start() {
         runTimeLeft = TimeInterval(Float.rand(minr: 5 * 60, maxr: 90 * 60))
         if runTimer == nil {
-            runTimer = Timer.scheduledTimer(
-                withTimeInterval: EngineSim.sleepTime,
-                repeats: true,
-                block: updateState
-            )
+            if #available(iOS 10.0, *) {
+                runTimer = Timer.scheduledTimer(
+                    withTimeInterval: EngineSim.sleepTime,
+                    repeats: true,
+                    block: updateState
+                )
+            } else {
+                let callbackObj = ArgCallbackObj(updateState)
+                runTimer = Timer.scheduledTimer(
+                    timeInterval: EngineSim.sleepTime,
+                    target: callbackObj,
+                    selector: #selector(ArgCallbackObj.callbackSel(_:)),
+                    userInfo: nil,
+                    repeats: true
+                )
+            }
         }
     }
     
-    private func updateState(runTimer: Timer) {
-        assert(self.runTimer == runTimer)
+    private func updateState(runTimer: AnyObject) {
+        assert(self.runTimer === runTimer)
         
         if runTimeLeft > 0 {
             updateSimulationState()

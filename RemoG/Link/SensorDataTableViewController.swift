@@ -54,6 +54,24 @@ class SensorDataTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = indexPath.row
+        
+        let fieldKey = sensorData.keys[sensorData.keys.index(sensorData.keys.startIndex, offsetBy: index)]
+        let fieldValue = sensorData.values[sensorData.values.index(sensorData.values.startIndex, offsetBy: index)]
+        if fieldKey == SensorDataController.locationKey &&
+            fieldValue == SensorDataController.locationDisabledVal {
+            //Describe why the location is disabled, and how to fix it, in an alert
+            let alert = UIAlertController(
+                title: "This app can't access location, so it get your current speed",
+                message: "To allow this app to access location, go to 'Settings > Privacy > Location Services > RemoG' and under 'Allow Location Access', select 'While Using the App'",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

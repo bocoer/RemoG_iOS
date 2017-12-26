@@ -149,6 +149,7 @@ class GaugeView: UIView {
             width: GaugeView.valueFontMaxWidth,
             height: GaugeView.valueFontSize
         )
+        valueLabel.contentsScale = UIScreen.main.scale
         valueLabel.isHidden = true
         
         valueMarker = CALayer()
@@ -223,6 +224,7 @@ class GaugeView: UIView {
                 height: GaugeView.tickFontSize
             )
             majorTickLabel.transform = CATransform3DMakeRotation(tickLabelRotation, 0, 0, 1)
+            majorTickLabel.contentsScale = UIScreen.main.scale
             
             majorTickLabel.string = String(tickValue)
             
