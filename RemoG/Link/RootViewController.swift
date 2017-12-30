@@ -10,14 +10,25 @@ import UIKit
 
 class RootViewController: UIViewController {
     let rootController: RootController = RootController()
+    let gpsController: GPSController
 
     var overviewViewController: SensorDataViewController!
     var mphDualViewController: GaugeDualViewController!
     var tempDualViewController: GaugeDualViewController!
     var pageViewController: SimplePageViewController!
     
+    required init?(coder aDecoder: NSCoder) {
+        gpsController = GPSController(rootController: rootController)
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Test engine
+        let engineSim = EngineSim()
+        engineSim.controller = rootController
+        engineSim.start()
         
         overviewViewController = storyboard!.instantiateViewController(withIdentifier: "SensorDataViewController") as! SensorDataViewController
         overviewViewController.sensorDataController = rootController.sensorDataController
@@ -43,11 +54,6 @@ class RootViewController: UIViewController {
         
         self.addChildViewController(pageViewController!)
         self.view.addSubview(pageViewController!.view)
-        
-        //Test engine
-        let engineSim = EngineSim()
-        engineSim.controller = rootController
-        engineSim.start()
     }
 }
 
