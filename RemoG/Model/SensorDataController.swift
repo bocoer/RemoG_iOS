@@ -13,7 +13,9 @@ class SensorDataController {
     static let locationDisabledVal: String = "Disabled"
     ///The possible keys, in order of how they should be displayed
     static let keys: [String] = [
-        "Mph",
+        SpeedUnit.mph.label,
+        SpeedUnit.kph.label,
+        SpeedUnit.mps.label,
         "RPM",
         "OT °F",
         "Oil PSI",

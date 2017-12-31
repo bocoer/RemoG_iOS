@@ -11,21 +11,9 @@ import UIKit
 /*
  * Controls a view which displays sensor data.
  */
-class SensorDataViewController: UIViewController {
+class SensorDataViewController: TitledViewController {
     var sensorDataController: SensorDataController!
     var tableViewController: SensorDataTableViewController!
-
-    @IBOutlet weak var titleLabel: UILabel?
-    override var title: String? {
-        didSet {
-            titleLabel?.text = title
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        titleLabel?.text = title
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)

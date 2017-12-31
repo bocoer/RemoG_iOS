@@ -11,14 +11,22 @@ import UIKit
 class RootViewController: UIViewController {
     let rootController: RootController = RootController()
     let gpsController: GPSController
+    let settingsController: SettingsController
+    let persistenceController: PersistenceController
 
     var overviewViewController: SensorDataViewController!
     var mphDualViewController: GaugeDualViewController!
     var tempDualViewController: GaugeDualViewController!
-    var pageViewController: SimplePageViewController!
+    var settingsViewController: SettingsViewController!
+    var tabPageViewController: TabPageViewController!
     
     required init?(coder aDecoder: NSCoder) {
         gpsController = GPSController(rootController: rootController)
+        settingsController = SettingsController(rootController: rootController)
+        persistenceController = PersistenceController(
+            settingsController: settingsController,
+            userDefaults: UserDefaults.standard
+        )
         super.init(coder: aDecoder)
     }
     
@@ -36,7 +44,7 @@ class RootViewController: UIViewController {
         
         mphDualViewController = storyboard!.instantiateViewController(withIdentifier: "GaugeDualViewController") as! GaugeDualViewController
         mphDualViewController.sensorDataController = rootController.sensorDataController
-        mphDualViewController.gaugeController = rootController.mphGaugeController
+        mphDualViewController.gaugeController = rootController.speedGaugeController
         mphDualViewController.title = "Speed"
         
         tempDualViewController = storyboard!.instantiateViewController(withIdentifier: "GaugeDualViewController") as! GaugeDualViewController
@@ -44,16 +52,24 @@ class RootViewController: UIViewController {
         tempDualViewController.gaugeController = rootController.tempGaugeController
         tempDualViewController.title = "Temperature"
         
+        settingsViewController = storyboard!.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+        settingsViewController.settingsController = settingsController
+        settingsViewController.title = "Settings"
+        
         let viewControllers: [UIViewController] = [
             overviewViewController,
             mphDualViewController,
-            tempDualViewController
+            tempDualViewController,
+            settingsViewController
         ]
         
-        pageViewController = SimplePageViewController(allViewControllers: viewControllers, transitionStyle: .pageCurl)
+        tabPageViewController = TabPageViewController(
+            viewControllers: viewControllers,
+            transitionStyle: .scroll
+        )
         
-        self.addChildViewController(pageViewController!)
-        self.view.addSubview(pageViewController!.view)
+        addChildViewController(tabPageViewController)
+        view.addSubview(tabPageViewController.view)
     }
 }
 
