@@ -25,6 +25,7 @@
 		362853E11FE8708800CBF56E /* SensorDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362853E01FE8708800CBF56E /* SensorDataController.swift */; };
 		36389C1B1FE97BEE00A19F70 /* CallbackObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */; };
 		36389C1D1FE97DA200A19F70 /* CallbackDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */; };
+		363B35391FFA9CF30023DFD8 /* TempUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B35381FFA9CF30023DFD8 /* TempUnit.swift */; };
 		36413C4C1FF94E5300DB6916 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36413C4B1FF94E5300DB6916 /* SettingsTableViewController.swift */; };
 		36413C4E1FF950DC00DB6916 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36413C4D1FF950DC00DB6916 /* SettingsController.swift */; };
 		36413C501FF9546100DB6916 /* SpeedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36413C4F1FF9546100DB6916 /* SpeedUnit.swift */; };
@@ -90,6 +91,7 @@
 		362853E01FE8708800CBF56E /* SensorDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataController.swift; sourceTree = "<group>"; };
 		36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackObj.swift; sourceTree = "<group>"; };
 		36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackDictionary.swift; sourceTree = "<group>"; };
+		363B35381FFA9CF30023DFD8 /* TempUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempUnit.swift; sourceTree = "<group>"; };
 		36413C4B1FF94E5300DB6916 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		36413C4D1FF950DC00DB6916 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		36413C4F1FF9546100DB6916 /* SpeedUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedUnit.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				36413C511FF9546A00DB6916 /* SettingsSection.swift */,
 				36413C551FF9679800DB6916 /* SettingField.swift */,
 				36413C4F1FF9546100DB6916 /* SpeedUnit.swift */,
+				363B35381FFA9CF30023DFD8 /* TempUnit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				36A4613D1FE9CC7A003D4364 /* GaugeDualViewController.swift in Sources */,
 				36389C1D1FE97DA200A19F70 /* CallbackDictionary.swift in Sources */,
 				36B78C341FF1752700C69725 /* CGSize.swift in Sources */,
+				363B35391FFA9CF30023DFD8 /* TempUnit.swift in Sources */,
 				36B78C301FF1693E00C69725 /* CGRect.swift in Sources */,
 				36413C521FF9546A00DB6916 /* SettingsSection.swift in Sources */,
 			);

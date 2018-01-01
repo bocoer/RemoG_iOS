@@ -27,8 +27,8 @@ class SettingsController {
     }
     
     private func updateSections() {
-        let speedStep = self.rootController.speedGaugeController.majorStep
-        let tempStep = self.rootController.tempGaugeController.majorStep
+        let speedStep: Float = 10
+        let tempStep: Float = 10
         _sections = [
             SettingsSection(label: "Speed", fields: [
                 OptionSettingField(
@@ -59,10 +59,30 @@ class SettingsController {
                 )
             ]),
             SettingsSection(label: "Temperature", fields: [
+                OptionSettingField(
+                    label: "Unit",
+                    options: TempUnit.allValues.map { $0.label },
+                    curIndex: rootController.tempUnit.rawValue,
+                    setIndex: { newIndex in
+                        if let newUnit = TempUnit(rawValue: newIndex) {
+                            self.rootController.tempUnit = newUnit
+                            self.rootController.tempGaugeController.minValue = Float.round(
+                                self.rootController.tempGaugeController.minValue,
+                                by: tempStep
+                            )
+                            self.rootController.tempGaugeController.maxValue = Float.round(
+                                self.rootController.tempGaugeController.maxValue,
+                                by: tempStep
+                            )
+                        } else {
+                            fatalError("Invalid index '\(newIndex)' not a speed unit")
+                        }
+                    }
+                ),
                 NumberSettingField(
                     label: "Minimum",
                     min: 0,
-                    max: 120,
+                    max: Float.round(TempUnit.convert(120, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
                     step: tempStep,
                     curValue: rootController.tempGaugeController.minValue,
                     setValue: { newValue in
@@ -71,8 +91,8 @@ class SettingsController {
                 ),
                 NumberSettingField(
                     label: "Maximum",
-                    min: 240,
-                    max: 360,
+                    min: Float.round(TempUnit.convert(240, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
+                    max: Float.round(TempUnit.convert(360, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
                     step: tempStep,
                     curValue: rootController.tempGaugeController.maxValue,
                     setValue: { newValue in

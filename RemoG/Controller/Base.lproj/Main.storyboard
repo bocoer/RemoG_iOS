@@ -301,7 +301,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NumberSettingCell" rowHeight="88" id="Tsf-oK-Ave" customClass="NumberSettingCell" customModule="RemoG" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumberSettingCell" rowHeight="88" id="Tsf-oK-Ave" customClass="NumberSettingCell" customModule="RemoG" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="335" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tsf-oK-Ave" id="0Ze-bK-VOM">
@@ -345,7 +345,7 @@
                                     <outlet property="valueLabel" destination="4jY-2e-9rf" id="fmA-qh-0EY"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OptionSettingCell" rowHeight="88" id="das-5q-xV7" customClass="OptionSettingCell" customModule="RemoG" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="OptionSettingCell" rowHeight="88" id="das-5q-xV7" customClass="OptionSettingCell" customModule="RemoG" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="116" width="335" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="das-5q-xV7" id="B4K-e1-4uR">

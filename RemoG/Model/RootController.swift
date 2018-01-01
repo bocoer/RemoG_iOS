@@ -14,36 +14,22 @@ class RootController {
     let sensorDataController = SensorDataController()
     let speedGaugeController = GaugeController(
         minValue: 0,
-        maxValue: 120
+        maxValue: 120,
+        unitLabel: SpeedUnit.mph.label
     )
     let tempGaugeController = GaugeController(
         minValue: 60,
-        maxValue: 360
+        maxValue: 360,
+        unitLabel: TempUnit.farenheit.label
     )
     
     var speed: Float = Float.nan {
         didSet {
-            sensorDataController.sensorData[speedUnit.label] = speed.isNaN ? nil : String(speed)
+            sensorDataController.sensorData["Speed"] =
+                speed.isNaN ?
+                nil :
+                "\(speed) \(speedUnit.label)"
             speedGaugeController.gaugeValue = speed
-            
-            changeHandlers.callbackAll()
-        }
-    }
-    var speedUnit: SpeedUnit = SpeedUnit.mph {
-        didSet {
-            sensorDataController.sensorData[oldValue.label] = nil
-            
-            speedGaugeController.maxValue = SpeedUnit.convert(
-                speedGaugeController.maxValue,
-                from: oldValue,
-                to: speedUnit
-            )
-            speedGaugeController.minValue = SpeedUnit.convert(
-                speedGaugeController.minValue,
-                from: oldValue,
-                to: speedUnit
-            )
-            speed = SpeedUnit.convert(speed, from: oldValue, to: speedUnit)
             
             changeHandlers.callbackAll()
         }
@@ -55,24 +41,30 @@ class RootController {
             changeHandlers.callbackAll()
         }
     }
-    var otf: Float = Float.nan {
+    var ot: Float = Float.nan {
         didSet {
-            sensorDataController.sensorData["OT °F"] = otf.isNaN ? nil : String(otf)
-            tempGaugeController.gaugeValue = otf
+            sensorDataController.sensorData["Oil Temp"] =
+                ot.isNaN ?
+                nil :
+                "\(ot) \(tempUnit.label)"
+            tempGaugeController.gaugeValue = ot
             
             changeHandlers.callbackAll()
         }
     }
-    var oilPsi: Int = uintNan {
+    var oilPsi: Float = Float.nan {
         didSet {
-            sensorDataController.sensorData["Oil PSI"] = (oilPsi == RootController.uintNan) ? nil : String(oilPsi)
+            sensorDataController.sensorData["Oil PSI"] = oilPsi.isNaN ? nil : String(oilPsi)
             
             changeHandlers.callbackAll()
         }
     }
-    var chtf: Int = uintNan {
+    var cht: Float = Float.nan {
         didSet {
-            sensorDataController.sensorData["CHT °F"] = (chtf == RootController.uintNan) ? nil : String(chtf)
+            sensorDataController.sensorData["CH Temp"] =
+                cht.isNaN ?
+                nil :
+                "\(cht) \(tempUnit.label)"
             
             changeHandlers.callbackAll()
         }
@@ -117,6 +109,43 @@ class RootController {
             case .some(.available), .none:
                 sensorDataController.sensorData[SensorDataController.locationKey] = nil
             }
+            
+            changeHandlers.callbackAll()
+        }
+    }
+    var speedUnit: SpeedUnit = SpeedUnit.mph {
+        didSet {
+            speedGaugeController.maxValue = SpeedUnit.convert(
+                speedGaugeController.maxValue,
+                from: oldValue,
+                to: speedUnit
+            )
+            speedGaugeController.minValue = SpeedUnit.convert(
+                speedGaugeController.minValue,
+                from: oldValue,
+                to: speedUnit
+            )
+            speed = SpeedUnit.convert(speed, from: oldValue, to: speedUnit)
+            speedGaugeController.unitLabel = speedUnit.label
+
+            changeHandlers.callbackAll()
+        }
+    }
+    var tempUnit: TempUnit = TempUnit.farenheit {
+        didSet {
+            tempGaugeController.maxValue = TempUnit.convert(
+                tempGaugeController.maxValue,
+                from: oldValue,
+                to: tempUnit
+            )
+            tempGaugeController.minValue = TempUnit.convert(
+                tempGaugeController.minValue,
+                from: oldValue,
+                to: tempUnit
+            )
+            ot = TempUnit.convert(ot, from: oldValue, to: tempUnit)
+            cht = TempUnit.convert(cht, from: oldValue, to: tempUnit)
+            tempGaugeController.unitLabel = tempUnit.label
             
             changeHandlers.callbackAll()
         }

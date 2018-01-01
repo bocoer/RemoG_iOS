@@ -32,6 +32,7 @@ class GaugeViewController: UIViewController {
         gaugeView.maxGaugeValue = gaugeController.maxValue
         gaugeView.majorStep = gaugeController.majorStep
         gaugeView.minorStep = gaugeController.minorStep
+        gaugeView.unitLabel = gaugeController.unitLabel
     }
 
     /*

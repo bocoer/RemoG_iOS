@@ -74,6 +74,11 @@ class GaugeView: UIView {
             updateMinorTicks()
         }
     }
+    @IBInspectable var unitLabel: String? = nil {
+        didSet {
+            updateValueLabel()
+        }
+    }
     
     override var frame: CGRect {
         didSet {
@@ -278,7 +283,12 @@ class GaugeView: UIView {
     ///Updates the text in the value label (to the current value),
     ///and moves it to prevent collision with the value marker.
     func updateValueLabel() {
-        valueLabel.string = String(format: "%.1f", gaugeValue) //Renders 1 decimal point
+        //Renders 1 decimal point of gauge value
+        if let unitLabel = unitLabel {
+            valueLabel.string = String(format: "%.1f %@", gaugeValue, unitLabel)
+        } else {
+            valueLabel.string = String(format: "%.1f", gaugeValue)
+        }
         
         let valueMarkerOnTopHalf = valueMarkerAngle > (-CGFloat.pi / 2) && valueMarkerAngle < (CGFloat.pi / 2)
         let valueLabelOnTopHalf = !valueMarkerOnTopHalf

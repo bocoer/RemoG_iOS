@@ -24,25 +24,32 @@ class GaugeController {
             changeHandlers.callbackAll()
         }
     }
+    var unitLabel: String {
+        didSet {
+            changeHandlers.callbackAll()
+        }
+    }
     var changeHandlers: CallbackDictionary = CallbackDictionary()
     var valueSpan: Float {
         return maxValue - minValue
     }
     var majorStep: Float {
         switch valueSpan {
-        case 20...100:
+        case 0...100:
             return 5
-        case 100...200:
+        case 100...160:
             return 10
-        case 200...400:
+        case 160...320:
             return 20
+        case 320...640:
+            return 40
         default:
             fatalError("Don't know step size for value span '\(valueSpan)'")
         }
     }
     var minorStep: Float {
         switch valueSpan {
-        case 0...400:
+        case 0...640:
             return 1
         default:
             fatalError("Don't know step size for value span '\(valueSpan)'")
@@ -51,9 +58,11 @@ class GaugeController {
     
     init(
         minValue: Float,
-        maxValue: Float
+        maxValue: Float,
+        unitLabel: String
     ) {
         self.minValue = minValue
         self.maxValue = maxValue
+        self.unitLabel = unitLabel
     }
 }
