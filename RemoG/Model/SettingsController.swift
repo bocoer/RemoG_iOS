@@ -52,6 +52,7 @@ class SettingsController {
                     min: Float.round(rootController.speedUnit.convertFrom(mps: 20), by: speedStep),
                     max: Float.round(rootController.speedUnit.convertFrom(mps: 100), by: speedStep),
                     step: speedStep,
+                    unitLabel: rootController.speedUnit.label,
                     curValue: rootController.speedGaugeController.maxValue,
                     setValue: { newValue in
                         self.rootController.speedGaugeController.maxValue = newValue
@@ -74,16 +75,21 @@ class SettingsController {
                                 self.rootController.tempGaugeController.maxValue,
                                 by: tempStep
                             )
+                            self.rootController.oilTempStatusController.curLimit = Float.round(
+                                self.rootController.oilTempStatusController.curLimit,
+                                by: tempStep
+                            )
                         } else {
-                            fatalError("Invalid index '\(newIndex)' not a speed unit")
+                            fatalError("Invalid index '\(newIndex)' not a temperature unit")
                         }
                     }
                 ),
                 ToggleNumberSettingField(
-                    label: "Warn When Oil Exceeds",
+                    label: "Warn When Oil Over",
                     min: Float.round(TempUnit.convert(150, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
                     max: Float.round(TempUnit.convert(300, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
                     step: tempStep,
+                    unitLabel: rootController.tempUnit.label,
                     curValue: rootController.oilTempStatusController.curLimit,
                     curEnabled: rootController.oilTempStatusController.limitEnabled,
                     setValue: { newLimit in
@@ -98,6 +104,7 @@ class SettingsController {
                     min: 0,
                     max: Float.round(TempUnit.convert(120, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
                     step: tempStep,
+                    unitLabel: rootController.tempUnit.label,
                     curValue: rootController.tempGaugeController.minValue,
                     setValue: { newValue in
                         self.rootController.tempGaugeController.minValue = newValue
@@ -108,6 +115,7 @@ class SettingsController {
                     min: Float.round(TempUnit.convert(240, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
                     max: Float.round(TempUnit.convert(360, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
                     step: tempStep,
+                    unitLabel: rootController.tempUnit.label,
                     curValue: rootController.tempGaugeController.maxValue,
                     setValue: { newValue in
                         self.rootController.tempGaugeController.maxValue = newValue

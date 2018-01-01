@@ -28,20 +28,28 @@ class NumberSettingField: SettingField {
     let min: Float
     let max: Float
     let step: Float
+    let unitLabel: String
     let curValue: Float
     let setValue: (Float) -> Void
+    
+    var curValueDesc: String {
+        //Renders no decimals in value
+        return String(format: "%.0f %@", curValue, unitLabel)
+    }
     
     init(
         label: String,
         min: Float,
         max: Float,
         step: Float,
+        unitLabel: String,
         curValue: Float,
         setValue: @escaping (Float) -> Void
     ) {
         self.min = min
         self.max = max
         self.step = step
+        self.unitLabel = unitLabel
         self.curValue = curValue
         self.setValue = setValue
         super.init(label: label)
@@ -54,6 +62,53 @@ class NumberSettingField: SettingField {
     override func load(from userDefaults: UserDefaults) {
         if let savedValue = userDefaults.value(forKey: label) {
             setValue(savedValue as! Float)
+        }
+    }
+}
+
+class ToggleNumberSettingField: NumberSettingField {
+    let curEnabled: Bool
+    let setEnabled: (Bool) -> Void
+    
+    override var curValueDesc: String {
+        return curEnabled ? super.curValueDesc : "Off"
+    }
+    
+    init(
+        label: String,
+        min: Float,
+        max: Float,
+        step: Float,
+        unitLabel: String,
+        curValue: Float,
+        curEnabled: Bool,
+        setValue: @escaping (Float) -> Void,
+        setEnabled: @escaping (Bool) -> Void
+        ) {
+        self.curEnabled = curEnabled
+        self.setEnabled = setEnabled
+        super.init(
+            label: label,
+            min: min,
+            max: max,
+            step: step,
+            unitLabel: unitLabel,
+            curValue: curValue,
+            setValue: setValue
+        )
+    }
+    
+    override func save(from userDefaults: UserDefaults) {
+        userDefaults.set(curValue, forKey: "\(label)-value")
+        userDefaults.set(curEnabled, forKey: "\(label)-enabled")
+    }
+    
+    override func load(from userDefaults: UserDefaults) {
+        if let savedValue = userDefaults.value(forKey: "\(label)-value") {
+            setValue(savedValue as! Float)
+        }
+        if let savedEnabled = userDefaults.value(forKey: "\(label)-enabled") {
+            setEnabled(savedEnabled as! Bool)
         }
     }
 }
@@ -90,43 +145,3 @@ class OptionSettingField: SettingField {
     }
 }
 
-class ToggleNumberSettingField: NumberSettingField {
-    let curEnabled: Bool
-    let setEnabled: (Bool) -> Void
-    
-    init(
-        label: String,
-        min: Float,
-        max: Float,
-        step: Float,
-        curValue: Float,
-        curEnabled: Bool,
-        setValue: @escaping (Float) -> Void,
-        setEnabled: @escaping (Bool) -> Void
-    ) {
-        self.curEnabled = curEnabled
-        self.setEnabled = setEnabled
-        super.init(
-            label: label,
-            min: min,
-            max: max,
-            step: step,
-            curValue: curValue,
-            setValue: setValue
-        )
-    }
-    
-    override func save(from userDefaults: UserDefaults) {
-        userDefaults.set(curValue, forKey: "\(label)-value")
-        userDefaults.set(curEnabled, forKey: "\(label)-enabled")
-    }
-    
-    override func load(from userDefaults: UserDefaults) {
-        if let savedValue = userDefaults.value(forKey: "\(label)-value") {
-            setValue(savedValue as! Float)
-        }
-        if let savedEnabled = userDefaults.value(forKey: "\(label)-enabled") {
-            setEnabled(savedEnabled as! Bool)
-        }
-    }
-}

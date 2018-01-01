@@ -145,7 +145,24 @@ class RootController {
                 from: oldValue,
                 to: tempUnit
             )
-            ot = TempUnit.convert(ot, from: oldValue, to: tempUnit)
+            let newOt = TempUnit.convert(ot, from: oldValue, to: tempUnit)
+            //Presents status alert from firing,
+            //by raising status before lowering temperature
+            if newOt > ot {
+                oilTempStatusController.curLimit = TempUnit.convert(
+                    oilTempStatusController.curLimit,
+                    from: oldValue,
+                    to: tempUnit
+                )
+                ot = newOt
+            } else {
+                ot = newOt
+                oilTempStatusController.curLimit = TempUnit.convert(
+                    oilTempStatusController.curLimit,
+                    from: oldValue,
+                    to: tempUnit
+                )
+            }
             cht = TempUnit.convert(cht, from: oldValue, to: tempUnit)
             tempGaugeController.unitLabel = tempUnit.label
             oilTempStatusController.unitLabel = tempUnit.label

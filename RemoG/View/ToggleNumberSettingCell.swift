@@ -19,7 +19,7 @@ class ToggleNumberSettingCell: NumberSettingCell {
             enabledSwitch.isOn = toggleSetting.curEnabled
             slider.isEnabled = toggleSetting.curEnabled
             stepper.isEnabled = toggleSetting.curEnabled
-            valueEnabledLabel.text = toggleSetting.curEnabled ? String(toggleSetting.curValue) : "Disabled"
+            valueEnabledLabel.text = toggleSetting.curValueDesc
         }
     }
     
@@ -29,7 +29,7 @@ class ToggleNumberSettingCell: NumberSettingCell {
         super.updateSettingFromSlider()
         
         if oldValue != toggleSetting.curValue && toggleSetting.curEnabled {
-            valueEnabledLabel.text = String(toggleSetting.curValue)
+            valueEnabledLabel.text = toggleSetting.curValueDesc
         }
     }
     
@@ -39,7 +39,7 @@ class ToggleNumberSettingCell: NumberSettingCell {
         super.updateSettingFromStepper()
         
         if oldValue != toggleSetting.curValue && toggleSetting.curEnabled {
-            valueEnabledLabel.text = String(toggleSetting.curValue)
+            valueEnabledLabel.text = toggleSetting.curValueDesc
         }
     }
     
@@ -50,7 +50,7 @@ class ToggleNumberSettingCell: NumberSettingCell {
             
             slider.isEnabled = toggleSetting.curEnabled
             stepper.isEnabled = toggleSetting.curEnabled
-            valueEnabledLabel.text = toggleSetting.curEnabled ? String(toggleSetting.curValue) : "Disabled"
+            valueEnabledLabel.text = toggleSetting.curValueDesc
         }
     }
 }

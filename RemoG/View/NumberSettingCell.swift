@@ -18,7 +18,7 @@ class NumberSettingCell: UITableViewCell {
         didSet {
             keyLabel.text = setting.label
             
-            valueLabel?.text = String(setting.curValue)
+            valueLabel?.text = setting.curValueDesc
             
             slider.minimumValue = setting.min
             slider.maximumValue = setting.max
@@ -36,7 +36,7 @@ class NumberSettingCell: UITableViewCell {
         if setting.curValue != newValue {
             setting.setValue(newValue)
             
-            valueLabel?.text = String(setting.curValue)
+            valueLabel?.text = setting.curValueDesc
             stepper.value = Double(setting.curValue)
         }
     }
@@ -46,7 +46,7 @@ class NumberSettingCell: UITableViewCell {
         if setting.curValue != newValue {
             setting.setValue(newValue)
             
-            valueLabel?.text = String(setting.curValue)
+            valueLabel?.text = setting.curValueDesc
             slider.value = setting.curValue
         }
     }
