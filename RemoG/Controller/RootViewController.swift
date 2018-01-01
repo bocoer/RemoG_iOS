@@ -40,20 +40,24 @@ class RootViewController: UIViewController {
         
         overviewViewController = storyboard!.instantiateViewController(withIdentifier: "SensorDataViewController") as! SensorDataViewController
         overviewViewController.sensorDataController = rootController.sensorDataController
+        overviewViewController.tabBarItem.image = #imageLiteral(resourceName: "OverviewIcon")
         overviewViewController.title = "Overview"
         
         mphDualViewController = storyboard!.instantiateViewController(withIdentifier: "GaugeDualViewController") as! GaugeDualViewController
         mphDualViewController.sensorDataController = rootController.sensorDataController
         mphDualViewController.gaugeController = rootController.speedGaugeController
+        mphDualViewController.tabBarItem.image = #imageLiteral(resourceName: "GaugeIcon")
         mphDualViewController.title = "Speed"
         
         tempDualViewController = storyboard!.instantiateViewController(withIdentifier: "GaugeDualViewController") as! GaugeDualViewController
         tempDualViewController.sensorDataController = rootController.sensorDataController
         tempDualViewController.gaugeController = rootController.tempGaugeController
+        tempDualViewController.tabBarItem.image = #imageLiteral(resourceName: "GaugeIcon")
         tempDualViewController.title = "Temperature"
         
         settingsViewController = storyboard!.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
         settingsViewController.settingsController = settingsController
+        settingsViewController.tabBarItem.image = #imageLiteral(resourceName: "SettingsIcon")
         settingsViewController.title = "Settings"
         
         let viewControllers: [UIViewController] = [
