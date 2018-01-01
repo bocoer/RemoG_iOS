@@ -331,7 +331,7 @@
                                         </label>
                                         <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ldM-zA-HGb">
                                             <rect key="frame" x="14" y="46" width="205" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <connections>
                                                 <action selector="updateSettingFromSlider" destination="Tsf-oK-Ave" eventType="valueChanged" id="zMl-aM-ltt"/>
                                             </connections>
