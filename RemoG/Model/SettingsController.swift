@@ -79,8 +79,22 @@ class SettingsController {
                         }
                     }
                 ),
+                ToggleNumberSettingField(
+                    label: "Warn When Oil Exceeds",
+                    min: Float.round(TempUnit.convert(150, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
+                    max: Float.round(TempUnit.convert(300, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
+                    step: tempStep,
+                    curValue: rootController.oilTempStatusController.curLimit,
+                    curEnabled: rootController.oilTempStatusController.limitEnabled,
+                    setValue: { newLimit in
+                        self.rootController.oilTempStatusController.curLimit = newLimit
+                    },
+                    setEnabled: { newLimitEnabled in
+                        self.rootController.oilTempStatusController.limitEnabled = newLimitEnabled
+                    }
+                ),
                 NumberSettingField(
-                    label: "Minimum",
+                    label: "Oil Gauge Minimum",
                     min: 0,
                     max: Float.round(TempUnit.convert(120, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
                     step: tempStep,
@@ -90,7 +104,7 @@ class SettingsController {
                     }
                 ),
                 NumberSettingField(
-                    label: "Maximum",
+                    label: "Oil Gauge Maximum",
                     min: Float.round(TempUnit.convert(240, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
                     max: Float.round(TempUnit.convert(360, from: .farenheit, to: self.rootController.tempUnit), by: tempStep),
                     step: tempStep,

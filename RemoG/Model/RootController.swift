@@ -22,6 +22,7 @@ class RootController {
         maxValue: 360,
         unitLabel: TempUnit.farenheit.label
     )
+    let oilTempStatusController: StatusController
     
     var speed: Float = Float.nan {
         didSet {
@@ -48,6 +49,7 @@ class RootController {
                 nil :
                 "\(ot) \(tempUnit.label)"
             tempGaugeController.gaugeValue = ot
+            oilTempStatusController.curValue = ot
             
             changeHandlers.callbackAll()
         }
@@ -146,9 +148,21 @@ class RootController {
             ot = TempUnit.convert(ot, from: oldValue, to: tempUnit)
             cht = TempUnit.convert(cht, from: oldValue, to: tempUnit)
             tempGaugeController.unitLabel = tempUnit.label
+            oilTempStatusController.unitLabel = tempUnit.label
             
             changeHandlers.callbackAll()
         }
     }
     var changeHandlers: CallbackDictionary = CallbackDictionary()
+    
+    init(notificationController: NotificationController) {
+        oilTempStatusController = StatusController(
+            notificationController: notificationController,
+            valueLabel: "Oil Temp",
+            unitLabel: tempUnit.label,
+            curValue: ot,
+            curLimit: 250,
+            limitEnabled: false
+        )
+    }
 }

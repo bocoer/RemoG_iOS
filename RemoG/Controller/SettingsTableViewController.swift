@@ -49,6 +49,10 @@ class SettingsTableViewController: UITableViewController {
         let setting = settingsController.settingAtIndexPath(indexPath)
         
         switch setting {
+        case let toggleNumberSetting as ToggleNumberSettingField:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ToggleNumberSettingCell", for: indexPath) as! ToggleNumberSettingCell
+            cell.toggleSetting = toggleNumberSetting
+            return cell
         case let numberSetting as NumberSettingField:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NumberSettingCell", for: indexPath) as! NumberSettingCell
             cell.setting = numberSetting

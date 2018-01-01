@@ -89,3 +89,44 @@ class OptionSettingField: SettingField {
         }
     }
 }
+
+class ToggleNumberSettingField: NumberSettingField {
+    let curEnabled: Bool
+    let setEnabled: (Bool) -> Void
+    
+    init(
+        label: String,
+        min: Float,
+        max: Float,
+        step: Float,
+        curValue: Float,
+        curEnabled: Bool,
+        setValue: @escaping (Float) -> Void,
+        setEnabled: @escaping (Bool) -> Void
+    ) {
+        self.curEnabled = curEnabled
+        self.setEnabled = setEnabled
+        super.init(
+            label: label,
+            min: min,
+            max: max,
+            step: step,
+            curValue: curValue,
+            setValue: setValue
+        )
+    }
+    
+    override func save(from userDefaults: UserDefaults) {
+        userDefaults.set(curValue, forKey: "\(label)-value")
+        userDefaults.set(curEnabled, forKey: "\(label)-enabled")
+    }
+    
+    override func load(from userDefaults: UserDefaults) {
+        if let savedValue = userDefaults.value(forKey: "\(label)-value") {
+            setValue(savedValue as! Float)
+        }
+        if let savedEnabled = userDefaults.value(forKey: "\(label)-enabled") {
+            setEnabled(savedEnabled as! Bool)
+        }
+    }
+}

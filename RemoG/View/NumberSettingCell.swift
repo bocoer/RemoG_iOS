@@ -9,16 +9,16 @@
 import UIKit
 
 class NumberSettingCell: UITableViewCell {
-    @IBOutlet private weak var keyLabel: UILabel!
-    @IBOutlet private weak var valueLabel: UILabel!
-    @IBOutlet private weak var slider: UISlider!
-    @IBOutlet private weak var stepper: UIStepper!
+    @IBOutlet weak var keyLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel?
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var stepper: UIStepper!
     
     var setting: NumberSettingField! {
         didSet {
             keyLabel.text = setting.label
             
-            valueLabel.text = String(setting.curValue)
+            valueLabel?.text = String(setting.curValue)
             
             slider.minimumValue = setting.min
             slider.maximumValue = setting.max
@@ -36,7 +36,7 @@ class NumberSettingCell: UITableViewCell {
         if setting.curValue != newValue {
             setting.setValue(newValue)
             
-            valueLabel.text = String(setting.curValue)
+            valueLabel?.text = String(setting.curValue)
             stepper.value = Double(setting.curValue)
         }
     }
@@ -46,7 +46,7 @@ class NumberSettingCell: UITableViewCell {
         if setting.curValue != newValue {
             setting.setValue(newValue)
             
-            valueLabel.text = String(setting.curValue)
+            valueLabel?.text = String(setting.curValue)
             slider.value = setting.curValue
         }
     }

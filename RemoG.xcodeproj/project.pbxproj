@@ -26,6 +26,12 @@
 		36389C1B1FE97BEE00A19F70 /* CallbackObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */; };
 		36389C1D1FE97DA200A19F70 /* CallbackDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */; };
 		363B35391FFA9CF30023DFD8 /* TempUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B35381FFA9CF30023DFD8 /* TempUnit.swift */; };
+		363B353B1FFAA7590023DFD8 /* ToggleNumberSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B353A1FFAA7590023DFD8 /* ToggleNumberSettingCell.swift */; };
+		363B353D1FFAABC90023DFD8 /* TintStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B353C1FFAABC90023DFD8 /* TintStepper.swift */; };
+		363B353F1FFAB2DB0023DFD8 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363B353E1FFAB2DB0023DFD8 /* UserNotifications.framework */; };
+		363B35411FFAB3970023DFD8 /* StatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B35401FFAB3970023DFD8 /* StatusController.swift */; };
+		363B35431FFAC35A0023DFD8 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B35421FFAC35A0023DFD8 /* NotificationController.swift */; };
+		363B35451FFAC5D10023DFD8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B35441FFAC5D10023DFD8 /* Notification.swift */; };
 		36413C4C1FF94E5300DB6916 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36413C4B1FF94E5300DB6916 /* SettingsTableViewController.swift */; };
 		36413C4E1FF950DC00DB6916 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36413C4D1FF950DC00DB6916 /* SettingsController.swift */; };
 		36413C501FF9546100DB6916 /* SpeedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36413C4F1FF9546100DB6916 /* SpeedUnit.swift */; };
@@ -92,6 +98,12 @@
 		36389C1A1FE97BEE00A19F70 /* CallbackObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackObj.swift; sourceTree = "<group>"; };
 		36389C1C1FE97DA200A19F70 /* CallbackDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackDictionary.swift; sourceTree = "<group>"; };
 		363B35381FFA9CF30023DFD8 /* TempUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempUnit.swift; sourceTree = "<group>"; };
+		363B353A1FFAA7590023DFD8 /* ToggleNumberSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleNumberSettingCell.swift; sourceTree = "<group>"; };
+		363B353C1FFAABC90023DFD8 /* TintStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintStepper.swift; sourceTree = "<group>"; };
+		363B353E1FFAB2DB0023DFD8 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		363B35401FFAB3970023DFD8 /* StatusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusController.swift; sourceTree = "<group>"; };
+		363B35421FFAC35A0023DFD8 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		363B35441FFAC5D10023DFD8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		36413C4B1FF94E5300DB6916 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		36413C4D1FF950DC00DB6916 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		36413C4F1FF9546100DB6916 /* SpeedUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedUnit.swift; sourceTree = "<group>"; };
@@ -120,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				363B353F1FFAB2DB0023DFD8 /* UserNotifications.framework in Frameworks */,
 				364AABD71FF2AACC004FB97C /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +210,7 @@
 		364AABD51FF2AACC004FB97C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				363B353E1FFAB2DB0023DFD8 /* UserNotifications.framework */,
 				364AABD61FF2AACC004FB97C /* CoreLocation.framework */,
 			);
 			name = Frameworks;
@@ -208,14 +222,17 @@
 				360A2A8A1FE87F5A00033B1C /* RootController.swift */,
 				362853E01FE8708800CBF56E /* SensorDataController.swift */,
 				36A461361FE9C805003D4364 /* GaugeController.swift */,
+				363B35401FFAB3970023DFD8 /* StatusController.swift */,
 				36413C4D1FF950DC00DB6916 /* SettingsController.swift */,
 				36413C5D1FF99BC500DB6916 /* PersistenceController.swift */,
 				364AABD81FF2AB53004FB97C /* GPSController.swift */,
 				361DCB3D1FEF4AEB000E66FE /* EngineSim.swift */,
+				363B35421FFAC35A0023DFD8 /* NotificationController.swift */,
 				36413C511FF9546A00DB6916 /* SettingsSection.swift */,
 				36413C551FF9679800DB6916 /* SettingField.swift */,
 				36413C4F1FF9546100DB6916 /* SpeedUnit.swift */,
 				363B35381FFA9CF30023DFD8 /* TempUnit.swift */,
+				363B35441FFAC5D10023DFD8 /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,8 +284,10 @@
 			children = (
 				360A2A881FE87B6200033B1C /* SensorDataFieldCell.swift */,
 				36A461381FE9C8B9003D4364 /* GaugeView.swift */,
+				363B353A1FFAA7590023DFD8 /* ToggleNumberSettingCell.swift */,
 				36413C531FF9676400DB6916 /* NumberSettingCell.swift */,
 				36413C5B1FF96BFA00DB6916 /* OptionSettingCell.swift */,
+				363B353C1FFAABC90023DFD8 /* TintStepper.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -416,6 +435,7 @@
 				36A4613B1FE9C8DA003D4364 /* GaugeViewController.swift in Sources */,
 				36413C501FF9546100DB6916 /* SpeedUnit.swift in Sources */,
 				362853E11FE8708800CBF56E /* SensorDataController.swift in Sources */,
+				363B353B1FFAA7590023DFD8 /* ToggleNumberSettingCell.swift in Sources */,
 				36413C5C1FF96BFA00DB6916 /* OptionSettingCell.swift in Sources */,
 				36413C541FF9676400DB6916 /* NumberSettingCell.swift in Sources */,
 				362853DD1FE8634600CBF56E /* SensorDataViewController.swift in Sources */,
@@ -426,16 +446,20 @@
 				36413C5A1FF96ACA00DB6916 /* Float.swift in Sources */,
 				361DCB3E1FEF4AEB000E66FE /* EngineSim.swift in Sources */,
 				36A461391FE9C8B9003D4364 /* GaugeView.swift in Sources */,
+				363B35451FFAC5D10023DFD8 /* Notification.swift in Sources */,
 				36413C4E1FF950DC00DB6916 /* SettingsController.swift in Sources */,
 				36413C561FF9679800DB6916 /* SettingField.swift in Sources */,
 				364AABE11FF2B173004FB97C /* LocationAvailability.swift in Sources */,
 				360AC5761FF8856E00804C0E /* SettingsViewController.swift in Sources */,
 				362853A91FE85DF200CBF56E /* AppDelegate.swift in Sources */,
 				36A4613F1FE9D028003D4364 /* SimplePageViewController.swift in Sources */,
+				363B353D1FFAABC90023DFD8 /* TintStepper.swift in Sources */,
 				360AC5781FF886A800804C0E /* TitledViewController.swift in Sources */,
 				364AABD41FF2A89A004FB97C /* ArgCallbackObj.swift in Sources */,
 				36B78C321FF174B600C69725 /* CGPoint.swift in Sources */,
+				363B35411FFAB3970023DFD8 /* StatusController.swift in Sources */,
 				36A4613D1FE9CC7A003D4364 /* GaugeDualViewController.swift in Sources */,
+				363B35431FFAC35A0023DFD8 /* NotificationController.swift in Sources */,
 				36389C1D1FE97DA200A19F70 /* CallbackDictionary.swift in Sources */,
 				36B78C341FF1752700C69725 /* CGSize.swift in Sources */,
 				363B35391FFA9CF30023DFD8 /* TempUnit.swift in Sources */,

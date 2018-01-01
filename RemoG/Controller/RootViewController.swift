@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import UserNotifications
 
 class RootViewController: UIViewController {
-    let rootController: RootController = RootController()
-    let gpsController: GPSController
-    let settingsController: SettingsController
-    let persistenceController: PersistenceController
+    var notificationController: NotificationController!
+    var rootController: RootController!
+    var gpsController: GPSController!
+    var settingsController: SettingsController!
+    var persistenceController: PersistenceController!
 
     var overviewViewController: SensorDataViewController!
     var mphDualViewController: GaugeDualViewController!
@@ -20,18 +22,29 @@ class RootViewController: UIViewController {
     var settingsViewController: SettingsViewController!
     var tabPageViewController: TabPageViewController!
     
-    required init?(coder aDecoder: NSCoder) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if #available(iOS 10.0, *) {
+            notificationController = NotificationController(
+                presentingViewController: self,
+                application: UIApplication.shared,
+                notificationCenter: UNUserNotificationCenter.current(),
+                options: [.alert, .carPlay]
+            )
+        } else {
+            notificationController = NotificationController(
+                presentingViewController: self,
+                application: UIApplication.shared
+            )
+        }
+        rootController = RootController(notificationController: notificationController)
         gpsController = GPSController(rootController: rootController)
         settingsController = SettingsController(rootController: rootController)
         persistenceController = PersistenceController(
             settingsController: settingsController,
             userDefaults: UserDefaults.standard
         )
-        super.init(coder: aDecoder)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         //Test engine
         let engineSim = EngineSim()

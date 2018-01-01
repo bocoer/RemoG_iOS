@@ -386,6 +386,58 @@
                                     <outlet property="valueLabel" destination="LPH-24-rGF" id="nSI-p3-5Xc"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ToggleNumberSettingCell" rowHeight="88" id="da8-Ks-Cqc" customClass="ToggleNumberSettingCell" customModule="RemoG" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="204" width="335" height="88"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="da8-Ks-Cqc" id="fOw-y0-sLD">
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="87.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="AQr-mF-unu" customClass="TintStepper" customModule="RemoG" customModuleProvider="target">
+                                            <rect key="frame" x="225" y="47" width="94" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <action selector="updateSettingFromStepper" destination="da8-Ks-Cqc" eventType="valueChanged" id="YKk-oj-WsL"/>
+                                            </connections>
+                                        </stepper>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Disabled" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppc-UC-9Kd">
+                                            <rect key="frame" x="174" y="10" width="87" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfy-wl-Z6a">
+                                            <rect key="frame" x="16" y="10" width="150" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="r1N-ck-W5a">
+                                            <rect key="frame" x="14" y="46" width="205" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <action selector="updateSettingFromSlider" destination="da8-Ks-Cqc" eventType="valueChanged" id="srE-m3-SVL"/>
+                                            </connections>
+                                        </slider>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Nm8-0C-uIb">
+                                            <rect key="frame" x="269" y="4" width="49" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="updateSettingFromEnabledSwitch" destination="da8-Ks-Cqc" eventType="valueChanged" id="L2E-CO-gUI"/>
+                                            </connections>
+                                        </switch>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="enabledSwitch" destination="Nm8-0C-uIb" id="5gM-rg-pnF"/>
+                                    <outlet property="keyLabel" destination="dfy-wl-Z6a" id="8ew-X5-BlJ"/>
+                                    <outlet property="slider" destination="r1N-ck-W5a" id="fed-YD-Vja"/>
+                                    <outlet property="stepper" destination="AQr-mF-unu" id="Z8L-hL-WhW"/>
+                                    <outlet property="valueEnabledLabel" destination="ppc-UC-9Kd" id="77I-Zs-uRX"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="7Gf-UG-D0j" id="woU-sc-g4Y"/>
