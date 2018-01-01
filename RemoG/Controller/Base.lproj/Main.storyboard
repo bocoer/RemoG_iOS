@@ -82,7 +82,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="SensorDataTableViewController" id="B7R-bW-Lxt" customClass="SensorDataTableViewController" customModule="RemoG" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="a2a-SB-SKl">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="608"/>
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="273"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -163,10 +163,10 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="U4p-cP-bia" secondAttribute="bottom" id="8zg-VG-snK"/>
                                     <constraint firstItem="U4p-cP-bia" firstAttribute="top" secondItem="HVF-7a-geh" secondAttribute="bottom" constant="16" id="TQX-54-ohd"/>
-                                    <constraint firstAttribute="trailing" secondItem="HVF-7a-geh" secondAttribute="trailing" constant="16" id="WBd-WF-6LL"/>
+                                    <constraint firstAttribute="trailing" secondItem="HVF-7a-geh" secondAttribute="trailing" priority="999" constant="16" id="WBd-WF-6LL"/>
                                     <constraint firstItem="U4p-cP-bia" firstAttribute="leading" secondItem="HVF-7a-geh" secondAttribute="trailing" constant="16" id="a6V-nB-9ES"/>
                                     <constraint firstItem="U4p-cP-bia" firstAttribute="trailing" secondItem="O65-dJ-GL2" secondAttribute="trailing" id="imj-Kl-eUa"/>
-                                    <constraint firstItem="HVF-7a-geh" firstAttribute="leading" secondItem="O65-dJ-GL2" secondAttribute="leading" constant="16" id="qKg-gN-T5R"/>
+                                    <constraint firstItem="HVF-7a-geh" firstAttribute="leading" secondItem="O65-dJ-GL2" secondAttribute="leading" priority="999" constant="16" id="qKg-gN-T5R"/>
                                     <constraint firstItem="HVF-7a-geh" firstAttribute="top" secondItem="O65-dJ-GL2" secondAttribute="top" constant="16" id="tq4-f6-peF"/>
                                     <constraint firstItem="U4p-cP-bia" firstAttribute="leading" secondItem="O65-dJ-GL2" secondAttribute="leading" id="uZy-yW-AMQ"/>
                                     <constraint firstItem="U4p-cP-bia" firstAttribute="top" secondItem="O65-dJ-GL2" secondAttribute="top" id="wbI-eo-8t8"/>
@@ -207,6 +207,12 @@
                     </view>
                     <connections>
                         <outlet property="titleLabel" destination="C4v-RH-hCz" id="ZoE-LK-eKy"/>
+                        <outletCollection property="landscapeConstraints" destination="wy0-kZ-hyJ" collectionClass="NSMutableArray" id="b4L-V5-GkL"/>
+                        <outletCollection property="landscapeConstraints" destination="a6V-nB-9ES" collectionClass="NSMutableArray" id="WFP-ig-uw1"/>
+                        <outletCollection property="landscapeConstraints" destination="wbI-eo-8t8" collectionClass="NSMutableArray" id="5Ss-ML-Pv5"/>
+                        <outletCollection property="portraitConstraints" destination="WBd-WF-6LL" collectionClass="NSMutableArray" id="ufm-D7-RzP"/>
+                        <outletCollection property="portraitConstraints" destination="TQX-54-ohd" collectionClass="NSMutableArray" id="tVt-xT-50c"/>
+                        <outletCollection property="portraitConstraints" destination="uZy-yW-AMQ" collectionClass="NSMutableArray" id="Dnq-NY-mMT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udd-NG-lQa" sceneMemberID="firstResponder"/>
@@ -303,7 +309,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="BqR-hM-LDd">
-                                            <rect key="frame" x="225" y="48" width="94" height="29"/>
+                                            <rect key="frame" x="225" y="47" width="94" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             <connections>
                                                 <action selector="updateSettingFromStepper" destination="Tsf-oK-Ave" eventType="valueChanged" id="jCF-yB-2Zt"/>
@@ -393,6 +399,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hsb-o7-dI7"/>
+        <segue reference="zcg-Th-3F5"/>
     </inferredMetricsTieBreakers>
 </document>
