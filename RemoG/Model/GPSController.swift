@@ -12,12 +12,6 @@ class GPSController: NSObject, CLLocationManagerDelegate {
     let rootController: RootController
     let locationManager: CLLocationManager
     
-    ///Converts from meters per second (location input)
-    ///to miles per hour (displayed).
-    private static func mphFrom(mps: CLLocationSpeed) -> Float {
-        return Float(mps * (3600 / 1609.34))
-    }
-    
     init(rootController: RootController) {
         self.rootController = rootController
         locationManager = CLLocationManager()
@@ -36,13 +30,10 @@ class GPSController: NSObject, CLLocationManagerDelegate {
         switch status {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
-            break
         case .restricted, .denied:
             rootController.locationAvailability = .disabled
-            break
         case .authorizedWhenInUse, .authorizedAlways:
             rootController.locationAvailability = CLLocationManager.locationServicesEnabled() ? .available : .unavailable
-            break
         }
     }
     
@@ -66,6 +57,7 @@ class GPSController: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let curLocation = locations.last!
-        rootController.mph = GPSController.mphFrom(mps: curLocation.speed)
+        let speed = Float(curLocation.speed)
+        rootController.speed = rootController.speedUnit.convertFrom(mps: speed)
     }
 }

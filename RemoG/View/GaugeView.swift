@@ -16,8 +16,8 @@ class GaugeView: UIView {
     private static let valueMarkerColorDark: CGColor = #colorLiteral(red: 0.75, green: 0, blue: 0, alpha: 1)
     
     private static let arcSpanAngleRad: CGFloat = 270 * (CGFloat.pi / 180)
-    private static let arcRightAngle: CGFloat = (CGFloat.pi * -1 / 2) + (arcSpanAngleRad / 2)
-    private static let arcLeftAngle: CGFloat = (CGFloat.pi * 3 / 2) - (arcSpanAngleRad / 2)
+    private static let arcRightAngle: CGFloat = (CGFloat.pi * 1 / 2) - (CGFloat.pi - (arcSpanAngleRad / 2))
+    private static let arcLeftAngle: CGFloat = (CGFloat.pi * 1 / 2) + (CGFloat.pi - (arcSpanAngleRad / 2))
     
     private static let majorTickSize: CGFloat = 12
     private static let minorTickSize: CGFloat = 6
@@ -44,7 +44,9 @@ class GaugeView: UIView {
     private static let valueMarkerBaseRadius: CGFloat = 12
     private static let valueMarkerInnerCircleRadius: CGFloat = 8
     
-    private static let valueMarkerMaxOutOfRangeRatio: CGFloat = 0.0625
+    private static let valueMarkerMaxAngleOutOfRange: CGFloat = 11.25 * (CGFloat.pi / 180)
+    private static let valueMarkerMinAngle: CGFloat = arcRightAngle - valueMarkerMaxAngleOutOfRange - CGFloat.pi
+    private static let valueMarkerMaxAngle: CGFloat = arcLeftAngle + valueMarkerMaxAngleOutOfRange
     
     var gaugeValue: Float = Float.nan {
         didSet {
@@ -61,15 +63,20 @@ class GaugeView: UIView {
     }
     @IBInspectable var minGaugeValue: Float = Float.nan
     @IBInspectable var maxGaugeValue: Float = Float.nan
-    @IBInspectable var numMajorTicks: Int = 0 {
+    @IBInspectable var majorStep: Float = Float.nan {
         didSet {
             updateMajorTicks()
             updateMajorTickLabels()
         }
     }
-    @IBInspectable var numMinorTicks: Int = 0 {
+    @IBInspectable var minorStep: Float = Float.nan {
         didSet {
             updateMinorTicks()
+        }
+    }
+    @IBInspectable var unitLabel: String? = nil {
+        didSet {
+            updateValueLabel()
         }
     }
     
@@ -111,10 +118,9 @@ class GaugeView: UIView {
         return radius - GaugeView.arcInset
     }
     private var valueMarkerAngle: CGFloat {
-        let gaugeFractionUnclamped = (CGFloat(gaugeValue) - CGFloat(minGaugeValue)) / (CGFloat(maxGaugeValue) - CGFloat(minGaugeValue))
-        let gaugeFraction = max(min(gaugeFractionUnclamped, 1 + GaugeView.valueMarkerMaxOutOfRangeRatio), -GaugeView.valueMarkerMaxOutOfRangeRatio)
-        return GaugeView.arcLeftAngle - (gaugeFraction * GaugeView.arcSpanAngleRad)
-
+        let unclampedGaugeAngle = angleOfValue(gaugeValue)
+        let gaugeAngle = max(min(unclampedGaugeAngle, GaugeView.valueMarkerMaxAngle), GaugeView.valueMarkerMinAngle)
+        return gaugeAngle
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -177,7 +183,7 @@ class GaugeView: UIView {
     ///Regenerates the major ticks' path.
     private func updateMajorTicks() {
         majorTicks.path = ticksPath(
-            numTicks: numMajorTicks,
+            step: majorStep,
             tickSize: GaugeView.majorTickSize
         )
     }
@@ -185,14 +191,14 @@ class GaugeView: UIView {
     ///Regenerates the minor ticks' path.
     private func updateMinorTicks() {
         minorTicks.path = ticksPath(
-            numTicks: numMinorTicks,
+            step: minorStep,
             tickSize: GaugeView.minorTickSize
         )
     }
     
-    private func ticksPath(numTicks: Int, tickSize: CGFloat) -> CGPath {
+    private func ticksPath(step: Float, tickSize: CGFloat) -> CGPath {
         let path = CGMutablePath()
-        forEachTick(numTicks: numTicks) { _, tickAngle in
+        forEachTick(step: step) { _, tickAngle in
             let tickStartPos = bounds.center + CGSize(radius: arcRadius, angle: tickAngle)
             let tickEndPos = bounds.center + CGSize(radius: arcRadius - tickSize, angle: tickAngle)
             path.move(to: tickStartPos)
@@ -205,9 +211,7 @@ class GaugeView: UIView {
     func updateMajorTickLabels() {
         majorTickLabels.forEach { $0.removeFromSuperlayer() }
         majorTickLabels.removeAll()
-        forEachTick(numTicks: numMajorTicks) { tickIdx, tickAngle in
-            let tickValue = Int(round(((Float(tickIdx) / Float(numMajorTicks - 1)) * (maxGaugeValue - minGaugeValue)) + minGaugeValue))
-            
+        forEachTick(step: majorStep) { tickValue, tickAngle in
             let tickLabelPos = bounds.center + CGSize(radius: radius - GaugeView.tickFontInset, angle: tickAngle)
             let tickLabelRotation = -tickAngle
             
@@ -226,23 +230,47 @@ class GaugeView: UIView {
             majorTickLabel.transform = CATransform3DMakeRotation(tickLabelRotation, 0, 0, 1)
             majorTickLabel.contentsScale = UIScreen.main.scale
             
-            majorTickLabel.string = String(tickValue)
+            majorTickLabel.string = String(Int(tickValue))
             
             layer.addSublayer(majorTickLabel)
             majorTickLabels.append(majorTickLabel)
         }
     }
     
-    ///Performs an action for each tick, and gives it the index and the tick's angle.
+    ///Enumerates each tick, calling a function with its value and angle.
+    ///Starts with the tick with the minimum value,
+    ///at the left-most angle on the arc.
+    ///Increments the tick value by the given step.
+    ///Ends at the last tick at or before the maximum value.
     ///Used to render ticks or tick labels.
-    private func forEachTick(numTicks: Int, _ action: (Int, CGFloat) -> Void) {
-        if numTicks > 1 {
-            let tickAngleDelta = -GaugeView.arcSpanAngleRad / CGFloat(numTicks - 1)
-            for tickIdx in 0..<numTicks {
-                let tickAngle = GaugeView.arcLeftAngle + (CGFloat(tickIdx) * tickAngleDelta)
-                action(tickIdx, tickAngle)
+    private func forEachTick(step: Float, _ action: (Float, CGFloat) -> Void) {
+        if !step.isNaN {
+            let angleStep = angleDeltaOfValue(step)
+            
+            var tickValue = minGaugeValue
+            var tickAngle = GaugeView.arcLeftAngle
+            //Don't want floating point errors.
+            //Floating point should only be off a little.
+            while tickValue <= maxGaugeValue + 0.1 {
+                action(tickValue, tickAngle)
+                
+                tickValue += step
+                tickAngle += angleStep
             }
         }
+    }
+    
+    ///How much the corresponding change in the gauge value
+    ///would change the angle on the gauge.
+    private func angleDeltaOfValue(_ value: Float) -> CGFloat {
+        let fraction = CGFloat(value) / (CGFloat(maxGaugeValue) - CGFloat(minGaugeValue))
+        return fraction * -GaugeView.arcSpanAngleRad
+    }
+    
+    ///The angle for the corresponding gauge value
+    private func angleOfValue(_ value: Float) -> CGFloat {
+        let fraction = (CGFloat(value) - CGFloat(minGaugeValue)) / (CGFloat(maxGaugeValue) - CGFloat(minGaugeValue))
+        return GaugeView.arcLeftAngle - (fraction * GaugeView.arcSpanAngleRad)
     }
     
     ///Regenerates the image of the value marker --
@@ -255,7 +283,12 @@ class GaugeView: UIView {
     ///Updates the text in the value label (to the current value),
     ///and moves it to prevent collision with the value marker.
     func updateValueLabel() {
-        valueLabel.string = String(format: "%.1f", gaugeValue) //Renders 1 decimal point
+        //Renders 1 decimal point of gauge value
+        if let unitLabel = unitLabel {
+            valueLabel.string = String(format: "%.1f %@", gaugeValue, unitLabel)
+        } else {
+            valueLabel.string = String(format: "%.1f", gaugeValue)
+        }
         
         let valueMarkerOnTopHalf = valueMarkerAngle > (-CGFloat.pi / 2) && valueMarkerAngle < (CGFloat.pi / 2)
         let valueLabelOnTopHalf = !valueMarkerOnTopHalf

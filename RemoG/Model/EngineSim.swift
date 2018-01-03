@@ -104,9 +104,9 @@ class EngineSim {
     }
     
     func updateController() {
-        controller?.otf = ot
-        controller?.chtf = Int(cht)
-        controller?.oilPsi = Int(op)
+        controller?.ot = TempUnit.convert(ot, from: .farenheit, to: controller!.tempUnit)
+        controller?.cht = cht
+        controller?.oilPsi = op
     }
 }
 
